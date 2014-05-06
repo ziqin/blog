@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /LingDong_Blog/
+Disallow: /lingdong/
 
 Sitemap: http://ziqin.gitcafe.com/sitemap.xml
