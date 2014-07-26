@@ -1,0 +1,14 @@
+{
+  "name": "hexo-site",
+  "version": "2.8.0",
+  "private": true,
+  "dependencies": {
+    "hexo-generator-feed": "^0.2.0",
+    "hexo-generator-sitemap": "^0.2.0",
+    "hexo-math": "^1.0.3",
+    "hexo-renderer-ejs": "*",
+    "hexo-renderer-marked": "*",
+    "hexo-renderer-stylus": "*",
+    "hexo-tag-vimhighlight": "^0.1.7"
+  }
+}

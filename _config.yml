@@ -1,0 +1,102 @@
+# Hexo Configuration
+## Docs: http://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: 子勤的小天地
+subtitle: 记录一名中学生的学习与生活
+description: 这是子勤的博客。子勤在这里分享一些与计算机技术相关的东西，记录学习与生活中的想法，等等。
+author: 王子勤 Ziqin
+email: wangziqin1998@gmail.com
+language: zh-CN
+keywords: 子勤的小天地, 王子勤, 子勤, ziqin, 博客, Blog
+
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+url: http://ziqin.gitcafe.com
+root: /
+permalink: :year/:month/:title/
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+permalink_defaults:
+
+# Directory
+source_dir: source
+public_dir: public
+
+# Writing
+new_post_name: :title.md # File name of new posts
+default_layout: post
+auto_spacing: false # Add spaces between asian characters and western characters
+titlecase: false # Transform title into titlecase
+external_link: true # Open external links in new tab
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+highlight:
+  enable: true
+  line_number: true
+  tab_replace:
+
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Archives
+## 2: Enable pagination
+## 1: Disable pagination
+## 0: Fully Disable
+archive: 1
+category: 2
+tag: 2
+
+# Server
+## Hexo uses Connect as a server
+## You can customize the logger format as defined in
+## http://www.senchalabs.org/connect/logger.html
+port: 4000
+server_ip: 0.0.0.0
+logger: false
+logger_format:
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY年 MMMDo dddd
+time_format: H:mm:ss
+
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 7
+pagination_dir: page
+
+# Disqus
+disqus_shortname:
+
+# 百度统计
+baidu_tongji: 43070123cb9692e0c0997d12e158e8b6
+
+# 多说评论
+duoshuo_shortname: ziqin
+
+# Extensions
+## Plugins: https://github.com/hexojs/hexo/wiki/Plugins
+## Themes: https://github.com/hexojs/hexo/wiki/Themes
+theme: landscape
+exclude_generator:
+plugins:
+- hexo-generator-feed
+- hexo-generator-sitemap
+- hexo-math
+- hexo-tag-vimhighlight
+
+
+# Deployment
+## Docs: http://hexo.io/docs/deployment.html
+deploy:
+  type:
