@@ -2,7 +2,7 @@
 menu:
   首页: /
   关于: /about
-  归档: /archives
+  存档: /archives
 rss: /atom.xml
 
 # Content
@@ -15,6 +15,7 @@ widgets:
 - category
 - tagcloud
 - recent_posts
+- archive
 - blogroll
 
 # Miscellaneous
