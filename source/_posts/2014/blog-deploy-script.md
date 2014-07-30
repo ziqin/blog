@@ -23,20 +23,26 @@ keywords: Hexo, Bash
 
 <!-- more -->
 
-``` bash update.sh https://gitcafe.com/ziqin/ziqin/blob/master/update.sh Download
+``` bash update.sh https://gitcafe.com/ziqin/ziqin/raw/master/update.sh Download
 #!/bin/bash
-echo 'Updating...'
+echo "Commit message:"
+read cmtmsg
+if [ ! -n "${cmtmsg}" ]; then
+	cmtmsg="update" # 缺省
+fi
+echo "Updating..."
 hexo clean
 git add --all
-git commit -m 'update'
+git commit -m "${cmtmsg}"
 hexo g
 rm db.json
 mv public ../public # 请确保上级目录中没有名为public的文件夹
 git checkout gitcafe-pages
 rm -r `ls` # ls不会列出.git，因此版本库不会被删除
 mv ../public/* .
+rm -r ../public/
 git add --all
-git commit -m 'update'
+git commit -m "${cmtmsg}"
 git checkout master
 git push origin master gitcafe-pages
 echo 'Updated!'
@@ -51,3 +57,10 @@ chmod +x update.sh
 以后，写完博文后，就不用一步步地操作了，只需 `./update.sh` 运行一下脚本，就能够完成更新的发布。从此，用 Hexo 写博文的方便程度又向 WordPress 靠近了一步。
 
 > Hexo + Git + GitCafe，一样可以很简单！ —— Ziqin
+
+---
+
+### 7月30日更新：
+
+* 可自由填写 commit message
+* 自动清理残余的 `public` 文件夹
