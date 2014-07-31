@@ -30,6 +30,13 @@ body
   font: font-size font-sans
   -webkit-text-size-adjust: 100%
 
+::selection
+  background: color-selection-background
+  color: color-selection-text
+::-moz-selection
+  background: color-selection-background
+  color: color-selection-text
+
 .outer
   clearfix()
   max-width: (column-width + gutter-width) * columns + gutter-width
