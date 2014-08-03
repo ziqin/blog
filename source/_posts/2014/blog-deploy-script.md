@@ -64,3 +64,5 @@ chmod +x update.sh
 
 * 可自由填写 commit message
 * 自动清理残余的 `public` 文件夹
+
+**Tips:** 这个脚本包含了删除自身这一操作，在 Linux 中这是被允许的，不过在 Windows 中可能会提示错误。子勤尚未测试它在 Windows 中的适用性。
