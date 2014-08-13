@@ -3,11 +3,11 @@ date: 2014-07-27 10:55:14
 categories:
 - OI
 - 解题报告
+- 算法竞赛入门经典
 tags:
 - OI
 - 库函数
 - 算法竞赛入门经典
-- 解题报告
 description: 子勤做的《算法竞赛入门经典》3.4.4 “重新实现库函数” 练习。
 keywords: OI, 重新实现库函数, 算法竞赛入门经典3.4.4, 算法竞赛入门经典, 解题报告
 ---
@@ -104,7 +104,7 @@ void my_fgets(char * buf, int maxn)
 
 实现 `strchr` 的功能，即在一个字符串中查找一个字符。
 
-``` c	
+``` c
 #include <stdio.h>
 char * my_strchr(char * s, char c);
 int main(void)
