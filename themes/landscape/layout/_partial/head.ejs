@@ -43,7 +43,10 @@
     <link rel="icon" href="<%- theme.favicon %>">
   <% } %>
   <link rel="icon" type="image/x-icon" href="<%- config.root %>favicon.ico">
-  <link href="/css/source_code_pro.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/source_code_pro.css" type="text/css">
+  <% if (theme.rocket_to_top) { %>
+    <link rel="stylesheet" href="/css/rocket-to-top.css" type="text/css">
+  <% } %>
   <%- css('css/style') %>
   <%- partial('google-analytics') %>
 </head>

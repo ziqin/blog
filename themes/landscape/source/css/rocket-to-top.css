@@ -1,0 +1,75 @@
+#rocket-to-top {
+	cursor: default;
+	display: none;
+	margin: -125px 0 0;
+	overflow: hidden;
+	padding: 0;
+	position: fixed;
+	right: 0;
+	top: 90%;
+	z-index: 11;
+	width: 149px;
+	height: 188px;
+}
+
+#rocket-to-top, #rocket-to-top .onhover, #rocket-to-top .onhover, .anim.fire {
+	background: url("/css/images/rocket-to-top.png") no-repeat 0 -18px;
+}
+
+#rocket-to-top .onhover, #rocket-to-top .anim {
+	left: 0;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	width: 149px;
+	height: 188px;
+}
+
+#rocket-to-top .onhover {
+	background-position: -149px -18px;
+	opacity: 0;
+	-webkit-transition: opacity 1s;
+	transition: opacity 1s;
+	z-index: 1;
+}
+
+#rocket-to-top .anim {
+	cursor: pointer;
+	z-index: 2;
+}
+
+#rocket-to-top .anim.fire {
+	-webkit-animation: rocket-fire 0.2s steps(4, end) infinite;
+	animation: rocket-fire 0.2s steps(4, end) infinite;
+}
+
+#rocket-to-top:hover .onhover {
+	opacity: 1;
+}
+
+#rocket-to-top.shot {
+	-webkit-transition: -webkit-transform 1.5s ease-in;
+	transition: transform 1.5s ease-in;
+	-webkit-transform: translate3d(0, -2000px, 0);
+	transform: translate3d(0, -2000px, 0);
+}
+
+@-webkit-keyframes rocket-fire {
+	0% {
+		background-position: -298px -18px;
+	}
+	100% {
+		background-position: -892px -18px;
+	}
+}
+
+@keyframes rocket-fire {
+	0% {
+		background-position: -298px -18px;
+	}
+	100% {
+		background-position: -892px -18px;
+	}
+}

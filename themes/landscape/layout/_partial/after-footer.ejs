@@ -16,6 +16,10 @@
 
 <script src="/js/jquery-2.1.0.min.js"></script>
 
+<% if (theme.rocket_to_top) { %>
+  <script src="/js/rocket-to-top.js"></script>
+<% } %>
+
 <% if (theme.fancybox){ %>
   <%- css('fancybox/jquery.fancybox') %>
   <%- js('fancybox/jquery.fancybox.pack') %>
