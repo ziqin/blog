@@ -70,4 +70,4 @@ CSS3 的 `border-radius` 属性不仅可以用于 `<img>` 标签，还可以用�
 
 ---
 
-[![本文以 CC BY-SA 3.0 CN 协议发布](/img/cc-by-sa.png "左侧图案的原来源由 Wikimedia 用户 Sting 创作并以 CC BY 2.5 协议授权；右侧图案的原来源由 Creative Commons 创作并以 CC BY 2.0 协议授权。")](https://creativecommons.org/licenses/by-sa/3.0/cn/)
+[![本文以 CC BY-SA 3.0 CN 协议发布](/img/cc-by-sa.png)](https://creativecommons.org/licenses/by-sa/3.0/cn/)

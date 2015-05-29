@@ -13,7 +13,7 @@ keywords: 子勤的小天地, 王子勤, 子勤, ziqin, 博客, Blog
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://ziqin.gitcafe.com
+url: http://ziqin.gitcafe.io
 root: /
 permalink: :year/:month/:title/
 tag_dir: tags
