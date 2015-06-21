@@ -6,7 +6,7 @@ if [ ! -n "${cmtmsg}" ]; then
 fi
 echo "Updating..."
 hexo clean
-git add --all
+git add --all :/
 git commit -m "${cmtmsg}"
 hexo g
 rm db.json
