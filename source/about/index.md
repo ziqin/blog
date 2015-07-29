@@ -19,7 +19,6 @@ date: 2013-07-18
 ### 我的联系方式
 
 Email: <wangziqin1998@gmail.com>
-腾讯微博: [@子勤](http://t.qq.com/wangziqin8323/)
 新浪微博: [@我叫子勤](http://weibo.com/ziqin123)
 
 希望能与你一起交流，共同进步。
