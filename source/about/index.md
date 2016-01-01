@@ -18,7 +18,8 @@ date: 2013-07-18
 
 ### 我的联系方式
 
-Email: <wangziqin1998@gmail.com>
+Email: <wangziqin1998@qq.com>
+GitHub: [Wang Ziqin](https://github.com/ziqin)
 新浪微博: [@我叫子勤](http://weibo.com/ziqin123)
 
 希望能与你一起交流，共同进步。
