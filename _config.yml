@@ -7,13 +7,13 @@ title: 子勤的小天地
 subtitle: 记录一名中学生的学习与生活
 description: 这是子勤的博客。子勤在这里分享一些与计算机技术相关的东西，记录学习与生活中的想法，等等。
 author: 王子勤 Ziqin
-email: wangziqin1998@qq.com
+email: i@wangziq.in
 language: zh-CN
 keywords: 子勤的小天地, 王子勤, 子勤, ziqin, 博客, Blog
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://ziqin.gitcafe.io
+url: http://blog.wangziq.in
 root: /
 permalink: :year/:month/:title/
 tag_dir: tags

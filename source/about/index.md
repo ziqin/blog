@@ -6,7 +6,7 @@ date: 2013-07-18
 
 <img src="/img/ziqin.png" class="rounded" style="border: 0; border-radius: 64px; height: 128px; width: 128px; box-shadow: 0 0 10px #999; display: block;">
 
-我叫王子勤 (ziqin)，高中生一枚，喜欢听音乐，热爱计算机技术，喜欢轻轻地折腾 Linux，正在学习程序设计。
+我叫王子勤，高中生一枚，喜欢听音乐，热爱计算机科学技术。
 
 ### 关于这个博客
 
@@ -18,7 +18,7 @@ date: 2013-07-18
 
 ### 我的联系方式
 
-Email: <wangziqin1998@qq.com>
+Email: <i@wangziq.in>
 GitHub: [Wang Ziqin](https://github.com/ziqin)
 新浪微博: [@我叫子勤](http://weibo.com/ziqin123)
 
