@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: http://ziqin.gitcafe.io/sitemap.xml
+Sitemap: http://blog.wangziq.in/sitemap.xml
