@@ -2,4 +2,4 @@
 
 这是我的个人博客，采用 [Hexo](http://hexo.io/) 架设。
 
-网址：<http://ziqin.gitcafe.io>
+网址：<http://blog.wangziq.in>
