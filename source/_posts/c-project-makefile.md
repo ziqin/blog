@@ -5,8 +5,6 @@ categories:
 tags:
 - C语言
 - Makefile
-description: 子勤分享在C语言项目中简单地管理多个源文件的方法。
-keywords: C语言,C,Makefile,头文件
 ---
 
 喜欢折腾 Linux 的朋友，都有过以编译源码来安装软件的经历吧。细心的你一定不难发现，绝大多数软件的源码包里都有由多个源文件。这么做有什么好处呢？又要如何管理它们呢？在此，子勤跟大家分享一下自己的见解。
@@ -256,7 +254,3 @@ clean:
 ---
 
 子勤是 C 编程新手，所以这篇博文难免有错漏之处，希望朋友们能够在下面的评论框中指出，谢谢。
-
----
-
-[![本文以 CC BY-SA 3.0 CN 协议发布](/img/cc-by-sa.png)](https://creativecommons.org/licenses/by-sa/3.0/cn/)

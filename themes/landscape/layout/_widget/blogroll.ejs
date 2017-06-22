@@ -2,10 +2,9 @@
 	<h3 class="widget-title">友情链接</h3>
 	<div class="widget">
 		<ul>
-			<li><a href="http://ld.mmyz.net/" target="_blank">灵动计算机社</a></li>
-			<li><a href="http://zeyes.org/" target="_blank">泽爷工作室</a></li>
-			<li><a href="http://www.alekolau.cn/" target="_blank">Aleko Lau</a></li>
-			<li><a href="https://www.byvoid.com/" title="Beyond the Void" target="_blank">BYVoid</a></li>
+			<% for (var i in theme.blogroll) { %>
+				<li><a href="<%= theme.blogroll[i] %>" target="_blank"><%= i %></a></li>
+			<% } %>
 		</ul>
 	</div>
 </div> 

@@ -8,27 +8,22 @@
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//go.disqus.com/<% if (page.comments){ %>embed.js<% } else { %>count.js<% } %>';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/<% if (page.comments) { %>embed.js<% } else { %>count.js<% } %>';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
 <% } %>
 
-<script src="/js/jquery-2.1.0.min.js"></script>
+<%- js('//cdn.bootcss.com/jquery/2.0.3/jquery.min.js') %>
 
 <% if (theme.rocket_to_top) { %>
-  <script src="/js/rocket-to-top.js"></script>
+  <%- css('css/rocket-to-top') %>
+  <%- js('js/rocket-to-top') %>
 <% } %>
 
 <% if (theme.fancybox){ %>
   <%- css('fancybox/jquery.fancybox') %>
   <%- js('fancybox/jquery.fancybox.pack') %>
-<% } %>
-
-<%- partial('math-jax')%>
-
-<% if (config.baidu_tongji){ %>
-  <%- partial('baidu_tongji') %>
 <% } %>
 
 <%- js('js/script') %>

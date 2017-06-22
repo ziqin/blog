@@ -5,8 +5,6 @@ categories:
 tags:
 - 灵动计算机社
 - Arduino
-
-description: 灵动计算机社2015年社团嘉年华活动小计
 ---
 
 3月28号，是今年茂名一中社团嘉年华的日子。

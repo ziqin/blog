@@ -64,7 +64,6 @@
     height: auto
     display: block
     margin: auto
-    border-radius: 5px
   iframe
     border: none
   table
@@ -80,16 +79,9 @@
     padding: 10px 0
   blockquote
     font-family: font-serif
-    font-style: italic
-    font-size: 1em
+    font-size: 1.4em
     margin: line-height 20px
-    padding: 1px 24px 1px 24px
-    text-align: left
-    background-color: #eee
-    box-shadow: 0 0 20px #ccc inset
-    border-radius: 36px 3px 36px 3px
-    p
-      margin: 1em 0
+    text-align: center
     footer
       font-size: font-size
       margin: line-height 0
@@ -277,14 +269,6 @@ $article-share-link
     text-align: center
   &:hover
     color: #fff
-
-.article-share-weibo
-  @extend $article-share-link
-  &:before
-    content: "\f18a"
-  &:hover
-    background: color-pinterest
-    text-shadow: 0 1px darken(color-pinterest, 20%)
 
 .article-share-twitter
   @extend $article-share-link

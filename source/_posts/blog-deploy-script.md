@@ -5,7 +5,6 @@ tags:
 - Blog
 - Git
 - Hexo
-keywords: Hexo, Bash
 ---
 
 博客换成 Hexo 之后，觉得写新博文方便了许多。不过，回想一下，现在发一篇新的博文还是有些事情要做的：

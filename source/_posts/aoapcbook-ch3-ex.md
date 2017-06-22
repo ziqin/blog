@@ -7,8 +7,6 @@ categories:
 tags:
 - OI
 - 算法竞赛入门经典
-description: 子勤做的《算法竞赛入门经典》第3章习题。
-keywords: OI, 算法竞赛入门经典第3章习题, 算法竞赛入门经典, 信息学奥赛, NOIP, 解题报告
 ---
 
 第3章的题子勤做得不太好，有些实现可能思路不够清晰，请原谅。
@@ -337,7 +335,3 @@ int main(void)
     return 0;
 }
 ```
-
----
-
-[![本文以 CC BY-SA 3.0 CN 协议发布](/img/cc-by-sa.png)](https://creativecommons.org/licenses/by-sa/3.0/cn/)

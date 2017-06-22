@@ -9,7 +9,6 @@ tags:
 - C++
 - 算法
 - 库函数
-keywords: 排序方法测评, 快速排序, 归并排序, 冒泡排序, 排序, 算法
 ---
 
 看书的时候时不时会遇到对各种排序算法的介绍。有这么多排序算法，在比赛中一般用哪种会比较好？一方面想着，“快排大法好！现成不用码！”但又听说有的数据会专门卡快排。而且，快排真的有那么快吗？种种顾虑涌上心头。所以，今天晚上我决定对两三个常见的排序算法测个明白，来个感性的认识。
@@ -79,30 +78,32 @@ int main(void)
 
 写个读写文件的框架，方便套用（同时也是公平的体现）：
 
-	#include <fstream>
-	using namespace std;
+``` cpp
+#include <fstream>
+using namespace std;
 
-	const int maxn = 1e6 + 10;
-	int data[maxn];		// 存数据的
+const int maxn = 1e6 + 10;
+int data[maxn];		// 存数据的
 
-	int main()
-	{
-		ifstream fin("sort_test.in");
-		ofstream fout("sort_test.out");
+int main()
+{
+	ifstream fin("sort_test.in");
+	ofstream fout("sort_test.out");
 
-		int n;
-		fin >> n;		// 数据数量
-		for (int i = 0; i < n; i++)
-			fin >> data[i];
+	int n;
+	fin >> n;		// 数据数量
+	for (int i = 0; i < n; i++)
+		fin >> data[i];
 
-		// Sorting here...
+	// Sorting here...
 
-		for (int i = 0; i < n; i++)
-			fout << data[i] << '\n';
+	for (int i = 0; i < n; i++)
+		fout << data[i] << '\n';
 
-		fin.close();	fout.close();
-		return 0;
-	}
+	fin.close();	fout.close();
+	return 0;
+}
+```
 
 写好排序的代码后，把函数调用写在 `// Sorting here...` 那里，再加上函数声明之类的就 OK 了。
 
@@ -203,12 +204,15 @@ int main(void)
 
 据说，在许多情况下，取中点作为关键字可以一定程度地改善这个问题，所以上面第 4 行可以改成：
 
+``` cpp
 	int mid = data[(x+y) / 2];
-
+```
 但是，万一出题者猜到我这么想，设计了数据故意坑我怎么办？那咱就用猜不到的方法——随机化。
 每次要计算关键字时，先在下标范围内以随机数的形式确定一个下标，以它对应的元素值作为关键字就可以了，如下：
 
+``` cpp
 	int mid = data[(int)(rand()*1.0/RAND_MAX*(y-x) + x + 0.5)];
+```
 
 其中，`(int)(rand()*1.0/RAND_MAX*(y-x) + x + 0.5)` 表示的是 [x, y] 范围内的随机整数。`rand()*1.0/RAND_MAX` 表示 [0, 1] 内的实数，将它扩大 (y-x) 倍并加上 x，就是 [x, y] 范围内的随机数了。加上 0.5 并强制转换为 int 型是对它进行四舍五入。当然，要用到随机数，也要像随机数生成器那样 include `<cstdlib>` 和 `<ctime>`，并在 `main()`函数里执行 `srand(time(NULL))` 来初始化随机数种子。晕乎哉？不晕也 :-)
 
@@ -266,13 +270,9 @@ std::sort()			| 0.212
 
 总结一下上面的测试结果：
 
-1. 在多数情况下，std::sort() 表现较好（不过好像跟编译参数有关），我想，没啥特殊情况就用它吧；
+1. 在多数情况下，`std::sort()` 表现较好（不过好像跟编译参数有关），我想，没啥特殊情况就用它吧；
 2. 当数据基本有序时，手打快排（最左）会退化；对快速排序而言，采用一定的策略选择标准关键字（即上面代码中变量 mid 的取值）是很有必要的；
 3. 归并排序结果真的很稳定，它达不到最快，但也不慢，可以考虑使用；且它与快速排序之间的差距也比我想象中的小；
 4. 同为快速排序者，只要没退化，相差都不是特别大，使用时就不要太纠结啦；C 标准库和 C++ 标准模板库里的快排也不是轻易就会退化的。
 
 从晚饭前搞到现在（凌晨），终于写完了……
-
----
-
-[![本文以 CC BY-SA 3.0 CN 协议发布](/img/cc-by-sa.png)](https://creativecommons.org/licenses/by-sa/3.0/cn/)

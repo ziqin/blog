@@ -8,8 +8,6 @@ tags:
 - OI
 - 库函数
 - 算法竞赛入门经典
-description: 子勤做的《算法竞赛入门经典》3.4.4 “重新实现库函数” 练习。
-keywords: OI, 重新实现库函数, 算法竞赛入门经典3.4.4, 算法竞赛入门经典, 解题报告
 ---
 
 ### 练习 1：
@@ -160,7 +158,3 @@ int my_isdigit(char c)
 	return '0'<=c && c<='9';
 }
 ```
-
----
-
-[![本文以 CC BY-SA 3.0 CN 协议发布](/img/cc-by-sa.png)](https://creativecommons.org/licenses/by-sa/3.0/cn/)

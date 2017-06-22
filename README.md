@@ -1,5 +1,5 @@
-# 子勤的小天地
+# 子勤的博客
 
-这是我的个人博客，采用 [Hexo](http://hexo.io/) 架设。
+欢迎光顾子勤的博客 <http://blog.wangziq.in>
 
-网址：<http://blog.wangziq.in>
+博客采用 [Hexo](https://hexo.io) 搭建，采用 [GitHub Pages](https://pages.github.com/) 托管。

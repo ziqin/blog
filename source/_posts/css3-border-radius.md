@@ -6,8 +6,6 @@ categories:
 tags:
 - CSS
 - 网页
-description: 分享在网页设计中利用CSS3的border-radius属性轻松实现图片圆角的的方法。
-keywords: border-radius, CSS3, 网页设计
 ---
 
 <img src="/img/2013/css3-border-radius/cptsct.png" alt="I love Computer Society!" class="rounded" style="border: 0; border-radius: 48px; height: 256px; width: 256px; box-shadow: 0 0 20px #999; display: block;">
@@ -67,7 +65,3 @@ CSS3 的 `border-radius` 属性不仅可以用于 `<img>` 标签，还可以用�
 </style>
 
 不过，Internet Explorer < 9 不支持 `border-radius` 属性哦。如果你的网页需要兼容低版本的IE，可能要去寻找其他的解决方法。不过，子勤的博客就不考虑如何兼容低版本的 IE了，所以有不少地方都用到了这个 CSS 属性，既方便又不失美观。
-
----
-
-[![本文以 CC BY-SA 3.0 CN 协议发布](/img/cc-by-sa.png)](https://creativecommons.org/licenses/by-sa/3.0/cn/)

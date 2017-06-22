@@ -28,7 +28,3 @@ tags:
 附一张截图吧：
 
 ![高考倒计时 “设置”对话框 截图](/img/2016/CountDown/setting-dialog.png)
-
----
-
-[![本文以 CC BY-SA 3.0 CN 协议发布](/img/cc-by-sa.png)](https://creativecommons.org/licenses/by-sa/3.0/cn/)

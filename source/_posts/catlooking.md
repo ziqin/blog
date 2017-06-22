@@ -5,9 +5,6 @@ categories:
 - 桌面
 tags: 
 - Qt
-- 编译
-description: 专心写作应用 Catlooking 的简介，以及它的编译安装方法。
-keywords: Catlooking, Qt
 ---
 
 前一段时间，子勤发现了一个叫做 Catlooking 的有趣应用。
