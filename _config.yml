@@ -80,4 +80,6 @@ sitemap:
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repo: https://github.com/ziqin/blog.git
+  branch: gh-pages
