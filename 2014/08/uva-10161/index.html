@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>UVa 10161 - Ant on a Chessboard 解题报告 | 子勤的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原题：http://uva.onlinejudge.org/external/101/10161.htmlUVa 的题目描述总是那么长，所以子勤直接跑到 nocow 去看翻译了。 棋盘上的蚂蚁（UVa 10161）这道题应该算是找规律的题吧。虽然理论上可以 1, 2, 3, 4… 地推下去，但数据范围比较大（1≤N≤2×1091 \leq N \leq 2 \times 10^91≤N≤2×10​">
+<meta name="keywords" content="OI,UVa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UVa 10161 - Ant on a Chessboard 解题报告">
+<meta property="og:url" content="http://blog.wangziq.in/2014/08/uva-10161/index.html">
+<meta property="og:site_name" content="子勤的博客">
+<meta property="og:description" content="原题：http://uva.onlinejudge.org/external/101/10161.htmlUVa 的题目描述总是那么长，所以子勤直接跑到 nocow 去看翻译了。 棋盘上的蚂蚁（UVa 10161）这道题应该算是找规律的题吧。虽然理论上可以 1, 2, 3, 4… 地推下去，但数据范围比较大（1≤N≤2×1091 \leq N \leq 2 \times 10^91≤N≤2×10​">
+<meta property="og:image" content="http://blog.wangziq.in/img/2014/uva-10161/chess.png">
+<meta property="og:updated_time" content="2017-06-22T14:43:10.831Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UVa 10161 - Ant on a Chessboard 解题报告">
+<meta name="twitter:description" content="原题：http://uva.onlinejudge.org/external/101/10161.htmlUVa 的题目描述总是那么长，所以子勤直接跑到 nocow 去看翻译了。 棋盘上的蚂蚁（UVa 10161）这道题应该算是找规律的题吧。虽然理论上可以 1, 2, 3, 4… 地推下去，但数据范围比较大（1≤N≤2×1091 \leq N \leq 2 \times 10^91≤N≤2×10​">
+<meta name="twitter:image" content="http://blog.wangziq.in/img/2014/uva-10161/chess.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  
+  
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro">
+  
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css'><!-- hexo-inject:end -->
+  
+
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">子勤的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">随手写写</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/archives">存档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.wangziq.in"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-uva-10161" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/uva-10161/" class="article-date">
+  <time datetime="2014-08-20T02:22:10.000Z" itemprop="datePublished">2014年 8月20日 星期三</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OI/">OI</a>►<a class="article-category-link" href="/categories/OI/解题报告/">解题报告</a>►<a class="article-category-link" href="/categories/OI/解题报告/UVa/">UVa</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      UVa 10161 - Ant on a Chessboard 解题报告
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>原题：<a href="http://uva.onlinejudge.org/external/101/10161.html" target="_blank" rel="external">http://uva.onlinejudge.org/external/101/10161.html</a><br>UVa 的题目描述总是那么长，所以子勤直接跑到 nocow 去看<a href="http://www.nocow.cn/index.php/UVA/10161" target="_blank" rel="external">翻译</a>了。</p>
+<p>棋盘上的蚂蚁（UVa 10161）这道题应该算是找规律的题吧。虽然理论上可以 1, 2, 3, 4… 地推下去，但数据范围比较大（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>≤</mo><mi>N</mi><mo>≤</mo><mn>2</mn><mo>×</mo><mn>1</mn><msup><mn>0</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">1 \leq N \leq 2 \times 10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.950078em;vertical-align:-0.13597em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mrel">≤</span><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="mrel">≤</span><span class="mord mathrm">2</span><span class="mbin">×</span><span class="mord mathrm">1</span><span class="mord"><span class="mord mathrm">0</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">9</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>），我觉得这样可能会超时。所以还是决定去找规律。</p>
+<p>由于是蛇形填数，规律不容易一眼就看出来。经过近十分钟的观察和验算，我终于发现一些东西（底色高亮）：</p>
+<a id="more"></a>
+<p><img src="/img/2014/uva-10161/chess.png" alt="UVa 10161 的棋盘"></p>
+<p>对于棋盘上的每一个数（记为 <em>N</em> ），我们将它的平方根向上取整（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⌈</mo><msqrt><mrow><mi>N</mi></mrow></msqrt><mo>⌉</mo></mrow><annotation encoding="application/x-tex">\lceil\sqrt{N}\rceil</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.9266650000000001em;"></span><span class="strut bottom" style="height:1.176665em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mopen">⌈</span><span class="sqrt mord"><span class="sqrt-sign" style="top:-0.08666499999999999em;"><span class="style-wrap reset-textstyle textstyle uncramped">√</span></span><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">​</span></span><span class="mord textstyle cramped"><span class="mord mathit" style="margin-right:0.10903em;">N</span></span></span><span style="top:-0.846665em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">​</span></span><span class="reset-textstyle textstyle uncramped sqrt-line"></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">​</span></span>​</span></span></span><span class="mclose">⌉</span></span></span></span>，记为 <em>Key</em> ），可以看到：</p>
+<ol>
+<li>当 <em>Key</em> 为奇数时，<em>Key</em><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mrow></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span></span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span> 在第一纵列上（黄底色）。</li>
+<li>当 <em>Key</em> 为偶数时，<em>Key</em><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mrow></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span></span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span> 在第一橫行上（绿底色）。</li>
+<li>蓝色对角线上的数（记为 <em>Point</em> ）的坐标为 ( <em>Key, Key</em> )，值为 <em>Key</em> × ( <em>Key</em> - 1 ) + 1。</li>
+<li><em>N</em> 的橫坐标或纵坐标的其中一个一定与 <em>Point</em> 的相同，不同的那个可以根据 <em>Key</em> 的奇偶以及 <em>N</em> 与 <em>Point</em> 的差（<em>N</em> - <em>Point</em>，记为 <em>c</em>）的正负确定方向并以 <em>c</em> 为步长进行偏移而得到。具体规则为：<br>（1）<em>Key</em> 为奇数且 <em>c</em> 大于零时，<em>N</em> 的坐标为 ( <em>Key - c, Key</em> )；<br>（2）<em>Key</em> 为奇数且 <em>c</em> 小于零是，<em>N</em> 的坐标为 ( <em>Key, Key + c</em> )；<br>（3）<em>Key</em> 为偶数且 <em>c</em> 大于零时，<em>N</em> 的坐标为 ( <em>Key, Key - c</em> )；<br>（4）<em>Key</em> 为偶数且 <em>c</em> 小于零是，<em>N</em> 的坐标为 ( <em>Key + c, Key</em> )。</li>
+</ol>
+<p>例如要求 N 的坐标：<br><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mo>=</mo><mn>2</mn><mn>7</mn><mo separator="true">,</mo><mi>K</mi><mi>e</mi><mi>y</mi><mo>=</mo><mo>⌈</mo><msqrt><mrow><mn>2</mn><mn>7</mn></mrow></msqrt><mo>⌉</mo><mo>=</mo><mn>6</mn><mo separator="true">,</mo><mi>P</mi><mi>o</mi><mi>i</mi><mi>n</mi><mi>t</mi><mo>=</mo><mn>6</mn><mo>×</mo><mo>(</mo><mn>6</mn><mo>−</mo><mn>1</mn><mo>)</mo><mo>+</mo><mn>1</mn><mo>=</mo><mn>3</mn><mn>1</mn><mo separator="true">,</mo><mi>c</mi><mo>=</mo><mn>2</mn><mn>7</mn><mo>−</mo><mn>3</mn><mn>1</mn><mo>=</mo><mo>−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">N=27, Key=\lceil\sqrt{27}\rceil=6, Point=6\times(6-1)+1=31, c=27-31=-4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.9072200000000001em;"></span><span class="strut bottom" style="height:1.1572200000000001em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="mrel">=</span><span class="mord mathrm">2</span><span class="mord mathrm">7</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="mord mathit">e</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mrel">=</span><span class="mopen">⌈</span><span class="sqrt mord"><span class="sqrt-sign" style="top:-0.06722000000000006em;"><span class="style-wrap reset-textstyle textstyle uncramped">√</span></span><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">​</span></span><span class="mord textstyle cramped"><span class="mord mathrm">2</span><span class="mord mathrm">7</span></span></span><span style="top:-0.8272200000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">​</span></span><span class="reset-textstyle textstyle uncramped sqrt-line"></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">​</span></span>​</span></span></span><span class="mclose">⌉</span><span class="mrel">=</span><span class="mord mathrm">6</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.13889em;">P</span><span class="mord mathit">o</span><span class="mord mathit">i</span><span class="mord mathit">n</span><span class="mord mathit">t</span><span class="mrel">=</span><span class="mord mathrm">6</span><span class="mbin">×</span><span class="mopen">(</span><span class="mord mathrm">6</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mclose">)</span><span class="mbin">+</span><span class="mord mathrm">1</span><span class="mrel">=</span><span class="mord mathrm">3</span><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord mathit">c</span><span class="mrel">=</span><span class="mord mathrm">2</span><span class="mord mathrm">7</span><span class="mbin">−</span><span class="mord mathrm">3</span><span class="mord mathrm">1</span><span class="mrel">=</span><span class="mord">−</span><span class="mord mathrm">4</span></span></span></span><br>由于 6 为偶数、-4 小于零，所以 27 的坐标为 (6+(-4), 6)，即 (2, 6)。</p>
+<p>有上面的规则，写出程序就很简单了：</p>
+<figure class="highlight cpp"><figcaption><span>10161.cpp</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> num;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    num n;</div><div class="line">    <span class="keyword">for</span> (<span class="built_in">cin</span> &gt;&gt; n; n != <span class="number">0</span>; <span class="built_in">cin</span> &gt;&gt; n) &#123;</div><div class="line">        num key = num(<span class="built_in">ceil</span>(<span class="built_in">sqrt</span>(n)) + <span class="number">0.5</span>);</div><div class="line">        num point = key * (key - <span class="number">1</span>) + <span class="number">1</span>;</div><div class="line">        num c = n - point;</div><div class="line">        <span class="keyword">if</span> (key % <span class="number">2</span>) &#123;	<span class="comment">// key为奇数</span></div><div class="line">            <span class="keyword">if</span> (c &gt; <span class="number">0</span>)</div><div class="line">                <span class="built_in">cout</span> &lt;&lt; key - c &lt;&lt; <span class="string">' '</span> &lt;&lt; key &lt;&lt; <span class="string">'\n'</span>;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                <span class="built_in">cout</span> &lt;&lt; key &lt;&lt; <span class="string">' '</span> &lt;&lt; key + c &lt;&lt; <span class="string">'\n'</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;	<span class="comment">// key为偶数</span></div><div class="line">            <span class="keyword">if</span> (c &gt; <span class="number">0</span>)</div><div class="line">                <span class="built_in">cout</span> &lt;&lt; key &lt;&lt; <span class="string">' '</span> &lt;&lt; key - c &lt;&lt; <span class="string">'\n'</span>;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                <span class="built_in">cout</span> &lt;&lt; key + c &lt;&lt; <span class="string">' '</span> &lt;&lt; key &lt;&lt; <span class="string">'\n'</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>成功 AC！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.wangziq.in/2014/08/uva-10161/" data-id="cj48lgdzf001epc08h6gult3j" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OI/">OI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UVa/">UVa</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/08/uva-107/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          UVa 107 - The Cat in the Hat (帽子里的猫) 解题报告
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/08/compare-sort/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">排序方案速度测试</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/OI/">OI</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/OI/解题报告/">解题报告</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/OI/解题报告/UVa/">UVa</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OI/解题报告/算法竞赛入门经典/">算法竞赛入门经典</a><span class="category-list-count">3</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/应用/">应用</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/应用/桌面/">桌面</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/前端/">前端</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/测评/">测评</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/校园/">校园</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Arduino/" style="font-size: 10px;">Arduino</a> <a href="/tags/Bash/" style="font-size: 10px;">Bash</a> <a href="/tags/Blog/" style="font-size: 16px;">Blog</a> <a href="/tags/C/" style="font-size: 12px;">C++</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/C语言/" style="font-size: 10px;">C语言</a> <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/Makefile/" style="font-size: 10px;">Makefile</a> <a href="/tags/NOIP/" style="font-size: 10px;">NOIP</a> <a href="/tags/OI/" style="font-size: 20px;">OI</a> <a href="/tags/Qt/" style="font-size: 12px;">Qt</a> <a href="/tags/UVa/" style="font-size: 18px;">UVa</a> <a href="/tags/初中/" style="font-size: 10px;">初中</a> <a href="/tags/库函数/" style="font-size: 12px;">库函数</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/散文/" style="font-size: 12px;">散文</a> <a href="/tags/毕业季/" style="font-size: 10px;">毕业季</a> <a href="/tags/灵动计算机社/" style="font-size: 14px;">灵动计算机社</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/算法竞赛入门经典/" style="font-size: 14px;">算法竞赛入门经典</a> <a href="/tags/网页/" style="font-size: 10px;">网页</a> <a href="/tags/音乐/" style="font-size: 10px;">音乐</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/01/CountDown/">高考倒计时</a>
+          </li>
+        
+          <li>
+            <a href="/2015/07/bye/">告别</a>
+          </li>
+        
+          <li>
+            <a href="/2015/03/cptsct-carnival/">又是一年社团嘉年华</a>
+          </li>
+        
+          <li>
+            <a href="/2014/12/my-noip2014/">我的 NOIP 2014</a>
+          </li>
+        
+          <li>
+            <a href="/2014/10/uva-657/">UVa 657 - The die is cast 解题报告</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    <div class="widget-wrap">
+	<h3 class="widget-title">友情链接</h3>
+	<div class="widget">
+		<ul>
+			
+				<li><a href="http://ld.mmyz.net/" target="_blank">灵动计算机社</a></li>
+			
+				<li><a href="http://www.zeyes.org/" target="_blank">凌点时代</a></li>
+			
+				<li><a href="https://www.byvoid.com/" target="_blank">BYVoid</a></li>
+			
+		</ul>
+	</div>
+</div> 
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017王子勤<br>
+      本站文章以 <a href="https://creativecommons.org/licenses/by-sa/3.0/cn/" target="_blank">CC BY-SA 3.0 CN</a> 许可协议发布<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+    <a href="/archives" class="mobile-nav-link">存档</a>
+  
+</nav>
+    
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/css/rocket-to-top.css">
+  <script src="/js/rocket-to-top.js"></script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+    
+      <div id="rocket-to-top">
+  <div class="onhover"></div>
+  <div class="anim"></div>
+</div>
+
+    
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

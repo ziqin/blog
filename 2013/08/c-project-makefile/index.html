@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>C语言编程中简单的多个源文件管理方法 | 子勤的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="喜欢折腾 Linux 的朋友，都有过以编译源码来安装软件的经历吧。细心的你一定不难发现，绝大多数软件的源码包里都有由多个源文件。这么做有什么好处呢？又要如何管理它们呢？在此，子勤跟大家分享一下自己的见解。  为什么用多文件呢 结构清晰  多数软件包的源码都会把按照不同的功能模块，把源代码分成多个文件来管理，这样可以使源代码结构清晰，易于阅读，且便于使用版本控制软件对它们进行高效的管理。  节约编译">
+<meta name="keywords" content="C语言,Makefile">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言编程中简单的多个源文件管理方法">
+<meta property="og:url" content="http://blog.wangziq.in/2013/08/c-project-makefile/index.html">
+<meta property="og:site_name" content="子勤的博客">
+<meta property="og:description" content="喜欢折腾 Linux 的朋友，都有过以编译源码来安装软件的经历吧。细心的你一定不难发现，绝大多数软件的源码包里都有由多个源文件。这么做有什么好处呢？又要如何管理它们呢？在此，子勤跟大家分享一下自己的见解。  为什么用多文件呢 结构清晰  多数软件包的源码都会把按照不同的功能模块，把源代码分成多个文件来管理，这样可以使源代码结构清晰，易于阅读，且便于使用版本控制软件对它们进行高效的管理。  节约编译">
+<meta property="og:updated_time" content="2017-06-22T14:41:19.950Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C语言编程中简单的多个源文件管理方法">
+<meta name="twitter:description" content="喜欢折腾 Linux 的朋友，都有过以编译源码来安装软件的经历吧。细心的你一定不难发现，绝大多数软件的源码包里都有由多个源文件。这么做有什么好处呢？又要如何管理它们呢？在此，子勤跟大家分享一下自己的见解。  为什么用多文件呢 结构清晰  多数软件包的源码都会把按照不同的功能模块，把源代码分成多个文件来管理，这样可以使源代码结构清晰，易于阅读，且便于使用版本控制软件对它们进行高效的管理。  节约编译">
+  
+  
+    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  
+  
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro">
+  
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">子勤的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">随手写写</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+          <a class="main-nav-link" href="/archives">存档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.wangziq.in"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-c-project-makefile" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/08/c-project-makefile/" class="article-date">
+  <time datetime="2013-07-31T16:00:00.000Z" itemprop="datePublished">2013年 8月1日 星期四</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      C语言编程中简单的多个源文件管理方法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>喜欢折腾 Linux 的朋友，都有过以编译源码来安装软件的经历吧。细心的你一定不难发现，绝大多数软件的源码包里都有由多个源文件。这么做有什么好处呢？又要如何管理它们呢？在此，子勤跟大家分享一下自己的见解。</p>
+<hr>
+<h3 id="为什么用多文件呢"><a href="#为什么用多文件呢" class="headerlink" title="为什么用多文件呢"></a>为什么用多文件呢</h3><ul>
+<li>结构清晰</li>
+</ul>
+<p>多数软件包的源码都会把按照不同的功能模块，把源代码分成多个文件来管理，这样可以使源代码结构清晰，易于阅读，且便于使用版本控制软件对它们进行高效的管理。</p>
+<ul>
+<li>节约编译时间</li>
+</ul>
+<p>我们知道，C语言编译器在编译源代码的时候，一般会先将各个源代码文件（<code>.c</code>）编译成目标代码文件（<code>.o</code> 或 <code>.obj</code>），然后再将目标代码文件连接成可执行文件。如果把源代码分成多个文件进行管理，在修改了个别源代码文件后，只需重新编译修改过的文件及受它影响的文件，并再次连接即可，而不需要重新编译不受影响的文件。这样就可以节约不少编译时间。</p>
+<a id="more"></a>
+<hr>
+<h3 id="一个简单的多文件C语言小程序实例"><a href="#一个简单的多文件C语言小程序实例" class="headerlink" title="一个简单的多文件C语言小程序实例"></a>一个简单的多文件C语言小程序实例</h3><figure class="highlight c"><figcaption><span>main.c</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 将两个整数相加，并输出结果。 */</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"add.h"</span></span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> a, b, result;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"Please input two integers: "</span>);</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;a, &amp;b);</div><div class="line">	result = add_int(a, b);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d + %d = %d\n"</span>, a, b, result);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight c"><figcaption><span>add.h</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ADD_H</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ADD_H</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">add_int</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight c"><figcaption><span>add.c</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 将两个整形参数相加，并返回结果。 */</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"add.h"</span></span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">add_int</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">return</span> x + y;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们暂且把这个小程序的意思放下，先来编译一下它。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cc -o main main.c add.c</div></pre></td></tr></table></figure>
+<p>其中，<code>-o main</code> 代表生成名为 main 的文件。如果改为用下面的几行命令编译，可以更好地体现编译的过程，并使得目标文件可以重复使用，从而节约编译时间。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ cc -c main.c	<span class="comment"># 编译 main.c，生成目标文件 main.o</span></div><div class="line">$ cc -c add.c	<span class="comment"># 编译 add.c，生成目标文件 add.o</span></div><div class="line">$ cc -o main main.o add.o  <span class="comment"># 连接 main.o add.o，生成可执行文件 main</span></div></pre></td></tr></table></figure>
+<p>现在，我们只需要运行可执行文件 main 即可。</p>
+<p>从上面的三行构建命令中，我们不难看出，main.o 受到 main.c 的影响，add.o 受到 add.c 的影响。由于 main.c 和 add.c 中 <code>include</code> 了 add.h，所以 main.o 和 add.o 也会受到 add.h 的影响。而最后生成的 main 会受到 main.o 和 add.o 的影响。这是它们之间的「依赖关系」。</p>
+<p>记得上面说到，不需要重新编译不受影响的文件，在这个例子里，如果我们修改了 add.c 文件，而其他的文件未变动，只需执行以下命令即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cc -c add.c	<span class="comment"># 编译 add.c，生成目标文件 add.o</span></div><div class="line">$ cc -o main main.o add.o  <span class="comment"># 连接 main.o add.o，生成可执行文件 main</span></div></pre></td></tr></table></figure>
+<p>这样就免去了编译 main.c 的时间。有的人可能会不写 add.h，而是直接在 main.c 中 <code>#include &quot;add.c&quot;</code>，然后直接编译 main.c，那就没有节约编译时间这个优点了。</p>
+<hr>
+<h3 id="使用自动构建工具"><a href="#使用自动构建工具" class="headerlink" title="使用自动构建工具"></a>使用自动构建工具</h3><p>看了上面的几条命令，你可能会问，如果我把一个程序分成多个源文件，那么每次编译，不就得输入一大堆命令吗？这样做太麻烦了吧，用于输命令的时间甚至比用于编译的时间还要多，尤其是在源文件较多的时候。别怕，我们有自动化构建工具 make。我们只要把文件之间的依赖关系描述好，每次构建时，只需输入一条命令，make 就能自己判断出哪些文件需要重新编译，而哪些不用，并根据指定的命令把整个程序构建出来。这样就不用每次都输入一大堆的命令，又能节约编译时间。</p>
+<p>那么，怎么做才能自动构建呢？</p>
+<p>如果要使用 GNU make 来自动构建一个程序，需要为这个程序编写一个用于描述各个文件之间的依赖关系以及指定编译命令的名为 <code>Makefile</code> 的文件。</p>
+<p>我们先来为上面的小程序写个简单的 Makefile：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="section">main: main.o add.o</span></div><div class="line">	cc -o main main.o add.o</div><div class="line"><span class="section">main.o: main.c add.h</span></div><div class="line">	cc -c main.c</div><div class="line"><span class="section">add.o: add.c add.h</span></div><div class="line">	cc -c add.c</div></pre></td></tr></table></figure>
+<p>在源代码目录下执行 make 时，make 会自动查找目录中名为 Makefile 的文件，然后进行编译。</p>
+<p>细心的朋友应该可以发现，Makefile 其实是文件依赖关系和编译命令的结合。比如第一行 <code>main: main.o add.o</code> 表示的是，main 是要构建的目标，main 会受到 main.o 和 add.o 的影响（main 依赖于 main.o 和 add.o），如果 main 不存在，或是 main.o 或 add.o 比 main 新（make 会根据文件的最近修改时间来判断文件之间相对的新旧），就要执行下面（行要以 Tab 开头）的命令 <code>cc -o main main.o add.o</code> 来构建 main。</p>
+<p>简单点说，就是用一行来描述依赖关系，用接着的行来指定编译用的命令。</p>
+<p>不过，朋友们可能还会注意到，Makefile 中命令的顺序和上面的原始编译命令的不太一样。但如果执行 make，则屏幕显示的命令却又和原始的一样。显然，程序执行的顺序跟原始的是相同的。Makefile 中的第一个目标代表最终目标，而最终目标往往是最后才连接的，所以就有了顺序上的不同。make 执行的时候，它先看到 main，main 依赖 main.o，然后 make 就会到目录中找 main.o。如果 main.o 过期了，或者没找到 main.o，就往下看 Makefile，根据后面的规则来构建 main.o，再回过头来构建 main。make 就是这样一层一层地往下找，直到最后把 main 构建出来。</p>
+<p>在写 Makefile 的时候，还可以用变量，这给我们带来了很大的方便。举个例子吧：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">CC = gcc</div><div class="line"><span class="section">main: main.o add.o</span></div><div class="line">	<span class="variable">$(CC)</span> -o main main.o add.o</div><div class="line"><span class="section">main.o: main.c add.h</span></div><div class="line">	<span class="variable">$(CC)</span> -c main.c</div><div class="line"><span class="section">add.o: add.c add.h</span></div><div class="line">	<span class="variable">$(CC)</span> -c add.c</div></pre></td></tr></table></figure>
+<p>第一行里定义了一个名字叫 <code>CC</code> 的变量，并在后面以 <code>$(CC)</code> 的形式引用它。在这里，用 <code>$(CC)</code> 表示编译器，如果要使用其他的编译器，只需更改第一行即可，例如 <code>CC = tcc</code>，很方便吧。</p>
+<p>事实上，make 并不关心所执行的是否为编译命令。因此，我们还可以利用这一特点来实现安装、清理等功能。比如，我们可以在上面那个 Makefile 的后面加上两行代码来实现编译清理功能：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="section">clean:</span></div><div class="line">	rm main main.o add.o</div></pre></td></tr></table></figure>
+<p>make 允许只构建某个目标，因此我们可以执行 <code>make clean</code>，来“欺骗” make，让它清理编译生成的文件。</p>
+<p>我们还可以把 Makefile 写成这个样子：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">CC = gcc</div><div class="line">OBJECTS = main.o add.o</div><div class="line"><span class="section">main: <span class="variable">$(OBJECTS)</span></span></div><div class="line">	<span class="variable">$(CC)</span> -o main <span class="variable">$(OBJECTS)</span></div><div class="line"><span class="section">main.o: add.h</span></div><div class="line"><span class="section">add.o: add.h</span></div><div class="line"><span class="meta"><span class="meta-keyword">.PHONY</span>: clean</span></div><div class="line"><span class="section">clean:</span></div><div class="line">	-rm main <span class="variable">$(OBJECTS)</span></div></pre></td></tr></table></figure>
+<p>上面的 Makefile 看上去挺有趣吧，不过子勤不解释它的意思哦。如果想了解更多关于 Makefile 的知识，可以看看陈皓的<a href="http://wiki.ubuntu.org.cn/%E8%B7%9F%E6%88%91%E4%B8%80%E8%B5%B7%E5%86%99Makefile" target="_blank" rel="external">《跟我一起写 Makefile》</a>，那里有很详细的讲解。</p>
+<hr>
+<h3 id="头文件的写法"><a href="#头文件的写法" class="headerlink" title="头文件的写法"></a>头文件的写法</h3><p>说实话，子勤对怎么写也不太懂，还在学习中。不过，也把自己的想法记下来吧。</p>
+<p>在编写程序的时候，我们应按照模块化的思路，把一个程序按照其功能模块分成多个源文件（这里特指 .c 文件）来编写。说说上面那个将两个数相加的例子吧，在 main.c 中负责数据的输入和输出，在 add.c 中负责加法计算。那 add.h 是用来干什么的？其实，这个头文件是用来向编译器说明的。对于 main.c 来说，用到了 <code>add_int()</code>，而 <code>add_int()</code> 在其他文件里，如果编译 main.c 时不知道它是啥，编译器就会报错。于是，我们写一个 add.h，在编译 main.c 时告诉编译器，<code>add_int()</code> 是个返回值为整型、参数为两个整型变量的函数，即告诉了编译器 <code>add_int()</code> 是什么，它就能正常编译了。所以，我们要把函数定义写在 .c 文件里，把函数声明写在头文件里，然后在要调用该函数的源文件里 <code>include</code> 对应的头文件。</p>
+<p>然而，add.h 里除了函数声明，还有如下几行东东：</p>
+<figure class="highlight c"><figcaption><span>add.h</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ADD_H</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ADD_H</span></div><div class="line">....</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div></pre></td></tr></table></figure>
+<p>它们分别位于文件的开头和结尾，把文件内容框起来了。它们有什么作用呢？</p>
+<p>原来，它们的大名叫条件编译指令。其实，它们的意思不难理解，顾名思义即可。第一行，检查，如果没有定义（if no define）名为 <code>ADD_H</code> 的宏，则要编译以下的部分，直到相对应的条件编译结束（end if）。也就是说，在这个例子里，<code>#ifndef</code> 和 <code>#endif</code> 是一对的。这么写的理由，其实不难理解，就是为了防止重复包含相同的内容。第一遍的时候，检查有没有定义 <code>ADD_H</code> 宏，判断结果是没有定义，即成立，接着会定义 <code>ADD_H</code> 宏，然后进行声明。如果第二次还想包含同样的内容时，会先检查有没有定义 <code>ADD_H</code> 宏，由于已经包含一次了，所以定义了该宏，则不成立，就会跳过 <code>#ifndef</code> 到 <code>#endif</code> 间的内容。这样就避免了重复包含相同的内容。如果我们翻看 C 库，会发现头文件也是这么包装的，不过代表文件名的宏名常常以下划线 <code>_</code> 开头。其实，上面的小程序非常简单，并没有存在重复包含的情况，也没有人会在相邻的地方重复 <code>include</code> 两个相同文件。但在文件较多或者与他人协同开发等情况下，就不容易避免了，例如下面这个例子：</p>
+<figure class="highlight c"><figcaption><span>head1.h</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">....</div></pre></td></tr></table></figure>
+<figure class="highlight c"><figcaption><span>head2.h</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"head1.h"</span></span></div><div class="line">....</div></pre></td></tr></table></figure>
+<figure class="highlight c"><figcaption><span>main.c</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"head1.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"head2.h"</span></span></div><div class="line">....</div></pre></td></tr></table></figure>
+<p>预处理的时候，如果没有上述的条件编译指令，就会把 head1.h 的内容两次包含到 main.c 里，导致重复包含。不过，函数声明是允许重复的。既然如此，那么，为什么要防止重复包含呢？因为，头文件中也可能会有定义嘛。慢着，不是说函数定义要写在 <code>.c</code> 文件里吗？这里指的是像下面这样的“定义”：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 结构体类型定义，有时也被称作结构体类型声明</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">struct_name</span> &#123;</span> .... &#125;;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">struct_name</span> &#123;</span> .... &#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 宏定义</div><div class="line">#define NUM 2</div><div class="line">#define NUM 3</div></pre></td></tr></table></figure>
+<p>如果代码里重复定义了结构体类型，编译器会报错；如果代码里重复定义了宏，且值不同，编译器会给出警告。所以，我们往往用前面提到的条件编译包装法来避免重复定义。</p>
+<p>此外，还要注意全局变量（外部变量），比如把那个加法运算的例子改成这样：</p>
+<figure class="highlight c"><figcaption><span>main.h</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> MAIN_H</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAIN_H</span></div><div class="line"><span class="keyword">extern</span> <span class="keyword">int</span> a, b, result;</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* End main.h */</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight c"><figcaption><span>main.c</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 调用 add_int() 将两个整数相加，并输出结果。 */</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"main.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"add.h"</span></span></div><div class="line"><span class="keyword">int</span> a, b, result;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"Please input two integers: "</span>);</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;a, &amp;b);</div><div class="line">	add_int();</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d + %d = %d\n"</span>, a, b, result);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight c"><figcaption><span>add.h</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ADD_H</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ADD_H</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">add_int</span><span class="params">(<span class="keyword">void</span>)</span></span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* End add.h */</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight c"><figcaption><span>add.c</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"main.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"add.h"</span></span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">add_int</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">	result = a + b;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">CC = gcc</div><div class="line">OBJECTS = main.o add.o</div><div class="line"><span class="section">main: <span class="variable">$(OBJECTS)</span></span></div><div class="line">	<span class="variable">$(CC)</span> -o main <span class="variable">$(OBJECTS)</span></div><div class="line"><span class="section">main.o: main.h add.h</span></div><div class="line"><span class="section">add.o: main.h add.h</span></div><div class="line"><span class="meta"><span class="meta-keyword">.PHONY</span>: clean</span></div><div class="line"><span class="section">clean:</span></div><div class="line">	-rm main <span class="variable">$(OBJECTS)</span></div></pre></td></tr></table></figure>
+<p>修改后的代码，使用了全局变量，从而免去了函数传递参数时的拷贝工作。不过，为了在编译 add.c 的时候编译器能够认识这些全局变量，我们需要写一个 main.h，用 <code>extern</code> 修饰符来告诉编译器：变量 x、y、result 是外来的。（不过据子勤测试，即使没有加上 <code>extern</code> 修饰符，GCC(v4.7.2) 也不会报错，但 tcc 会报错。所以还是写上 <code>extern</code>。）</p>
+<hr>
+<p>子勤是 C 编程新手，所以这篇博文难免有错漏之处，希望朋友们能够在下面的评论框中指出，谢谢。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.wangziq.in/2013/08/c-project-makefile/" data-id="cj48lgdy4000jpc08cov4kzf8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C语言/">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Makefile/">Makefile</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/08/catlooking/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Catlooking 一个专心写作的环境
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/07/birth-of-blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">博客诞生记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/OI/">OI</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/OI/解题报告/">解题报告</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/OI/解题报告/UVa/">UVa</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OI/解题报告/算法竞赛入门经典/">算法竞赛入门经典</a><span class="category-list-count">3</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/应用/">应用</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/应用/桌面/">桌面</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/前端/">前端</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/测评/">测评</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/校园/">校园</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Arduino/" style="font-size: 10px;">Arduino</a> <a href="/tags/Bash/" style="font-size: 10px;">Bash</a> <a href="/tags/Blog/" style="font-size: 16px;">Blog</a> <a href="/tags/C/" style="font-size: 12px;">C++</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/C语言/" style="font-size: 10px;">C语言</a> <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/Makefile/" style="font-size: 10px;">Makefile</a> <a href="/tags/NOIP/" style="font-size: 10px;">NOIP</a> <a href="/tags/OI/" style="font-size: 20px;">OI</a> <a href="/tags/Qt/" style="font-size: 12px;">Qt</a> <a href="/tags/UVa/" style="font-size: 18px;">UVa</a> <a href="/tags/初中/" style="font-size: 10px;">初中</a> <a href="/tags/库函数/" style="font-size: 12px;">库函数</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/散文/" style="font-size: 12px;">散文</a> <a href="/tags/毕业季/" style="font-size: 10px;">毕业季</a> <a href="/tags/灵动计算机社/" style="font-size: 14px;">灵动计算机社</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/算法竞赛入门经典/" style="font-size: 14px;">算法竞赛入门经典</a> <a href="/tags/网页/" style="font-size: 10px;">网页</a> <a href="/tags/音乐/" style="font-size: 10px;">音乐</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/01/CountDown/">高考倒计时</a>
+          </li>
+        
+          <li>
+            <a href="/2015/07/bye/">告别</a>
+          </li>
+        
+          <li>
+            <a href="/2015/03/cptsct-carnival/">又是一年社团嘉年华</a>
+          </li>
+        
+          <li>
+            <a href="/2014/12/my-noip2014/">我的 NOIP 2014</a>
+          </li>
+        
+          <li>
+            <a href="/2014/10/uva-657/">UVa 657 - The die is cast 解题报告</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    <div class="widget-wrap">
+	<h3 class="widget-title">友情链接</h3>
+	<div class="widget">
+		<ul>
+			
+				<li><a href="http://ld.mmyz.net/" target="_blank">灵动计算机社</a></li>
+			
+				<li><a href="http://www.zeyes.org/" target="_blank">凌点时代</a></li>
+			
+				<li><a href="https://www.byvoid.com/" target="_blank">BYVoid</a></li>
+			
+		</ul>
+	</div>
+</div> 
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017王子勤<br>
+      本站文章以 <a href="https://creativecommons.org/licenses/by-sa/3.0/cn/" target="_blank">CC BY-SA 3.0 CN</a> 许可协议发布<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+    <a href="/archives" class="mobile-nav-link">存档</a>
+  
+</nav>
+    
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/css/rocket-to-top.css">
+  <script src="/js/rocket-to-top.js"></script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+    
+      <div id="rocket-to-top">
+  <div class="onhover"></div>
+  <div class="anim"></div>
+</div>
+
+    
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
