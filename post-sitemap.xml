@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://blog.wangziq.in/2016/01/CountDown/</loc>
+        <lastmod>2017-06-25T13:43:04.346Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://blog.wangziq.in/2014/08/uva-10719/</loc>
         <lastmod>2017-06-22T14:43:19.742Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -57,14 +65,6 @@
     <url>
         <loc>http://blog.wangziq.in/2013/11/css3-border-radius/</loc>
         <lastmod>2017-06-22T14:42:01.215Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://blog.wangziq.in/2016/01/CountDown/</loc>
-        <lastmod>2017-06-22T14:41:47.401Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
