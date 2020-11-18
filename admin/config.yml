@@ -3,12 +3,12 @@ backend:
   repo: ziqin/blog
   branch: master
 publish_mode: editorial_workflow
-media_folder: img/uploads
+media_folder: source/img/uploads
 public_folder: /img/uploads
 collections:
   - name: post
     label: Post
-    folder: _posts
+    folder: source/_posts
     create: true
     slug: "{{slug}}"
     fields:
