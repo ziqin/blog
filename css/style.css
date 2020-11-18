@@ -944,6 +944,10 @@ a.article-title:hover {
   max-width: 100%;
   margin: 0 auto;
 }
+.utterances {
+  margin-top: 1.8rem;
+  max-width: unset;
+}
 #comments {
   background: #fff;
   -webkit-box-shadow: 1px 2px 3px #ddd;
