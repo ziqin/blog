@@ -1,206 +1,208 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
     <url>
-        <loc>http://blog.wangziq.in</loc>
+        <loc>https://blog.wangziq.in/</loc>
         <changefreq>daily</changefreq>
         <priority>1</priority>
     </url>
 
+
     <url>
-        <loc>http://blog.wangziq.in/2016/01/CountDown/</loc>
-        <lastmod>2017-06-25T13:43:04.346Z</lastmod>
+        <loc>https://blog.wangziq.in/2014/08/uva-414/</loc>
+        <lastmod>2020-11-18T08:25:39.144Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/2014/08/uva-10719/</loc>
-        <lastmod>2017-06-22T14:43:19.742Z</lastmod>
+        <loc>https://blog.wangziq.in/2014/08/uva-457/</loc>
+        <lastmod>2020-11-18T08:25:39.144Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/2014/08/uva-10161/</loc>
-        <lastmod>2017-06-22T14:43:10.831Z</lastmod>
+        <loc>https://blog.wangziq.in/2014/10/uva-657/</loc>
+        <lastmod>2020-11-18T08:25:39.144Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/2014/08/uva-10055/</loc>
-        <lastmod>2017-06-22T14:43:02.595Z</lastmod>
+        <loc>https://blog.wangziq.in/2014/08/why-dont-i-continue-leading-cptsct/</loc>
+        <lastmod>2020-11-18T08:25:39.144Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/2014/10/uva-657/</loc>
-        <lastmod>2017-06-22T14:42:53.941Z</lastmod>
+        <loc>https://blog.wangziq.in/2016/01/CountDown/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/2014/08/uva-107/</loc>
-        <lastmod>2017-06-22T14:42:40.155Z</lastmod>
+        <loc>https://blog.wangziq.in/2014/10/add-rocket-to-top/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/2014/10/sea/</loc>
-        <lastmod>2017-06-22T14:42:25.928Z</lastmod>
+        <loc>https://blog.wangziq.in/2014/07/aoapcbook-ch2-ex/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/2013/11/css3-border-radius/</loc>
-        <lastmod>2017-06-22T14:42:01.215Z</lastmod>
+        <loc>https://blog.wangziq.in/2014/07/aoapcbook-ch3-ex/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/2014/08/compare-sort/</loc>
-        <lastmod>2017-06-22T14:41:36.296Z</lastmod>
+        <loc>https://blog.wangziq.in/2014/07/aoapcbook-ch3-relib/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/2013/08/c-project-makefile/</loc>
-        <lastmod>2017-06-22T14:41:19.950Z</lastmod>
+        <loc>https://blog.wangziq.in/2013/07/birth-of-blog/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/2015/07/bye/</loc>
-        <lastmod>2017-06-22T14:41:08.628Z</lastmod>
+        <loc>https://blog.wangziq.in/2014/07/blog-deploy-script/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/2014/07/aoapcbook-ch3-relib/</loc>
-        <lastmod>2017-06-22T14:35:45.254Z</lastmod>
+        <loc>https://blog.wangziq.in/2015/07/bye/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/2014/07/aoapcbook-ch3-ex/</loc>
-        <lastmod>2017-06-22T14:35:34.099Z</lastmod>
+        <loc>https://blog.wangziq.in/2013/07/c-project-makefile/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/2014/07/aoapcbook-ch2-ex/</loc>
-        <lastmod>2017-06-22T14:35:23.171Z</lastmod>
+        <loc>https://blog.wangziq.in/2013/08/catlooking/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/2014/08/uva-414/</loc>
-        <lastmod>2017-06-22T14:31:27.144Z</lastmod>
+        <loc>https://blog.wangziq.in/2014/08/compare-sort/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/2014/08/uva-457/</loc>
-        <lastmod>2017-06-22T14:30:16.699Z</lastmod>
+        <loc>https://blog.wangziq.in/2015/03/cptsct-carnival/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/2014/08/why-dont-i-continue-leading-cptsct/</loc>
-        <lastmod>2017-06-22T11:41:58.203Z</lastmod>
+        <loc>https://blog.wangziq.in/2013/11/css3-border-radius/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/2013/08/times-together/</loc>
-        <lastmod>2017-06-22T11:40:46.609Z</lastmod>
+        <loc>https://blog.wangziq.in/2014/07/development-of-blog/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/2014/12/my-noip2014/</loc>
-        <lastmod>2017-06-22T11:40:01.765Z</lastmod>
+        <loc>https://blog.wangziq.in/2014/12/my-noip2014/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/2014/07/development-of-blog/</loc>
-        <lastmod>2017-06-22T11:39:53.750Z</lastmod>
+        <loc>https://blog.wangziq.in/2014/10/sea/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/2015/03/cptsct-carnival/</loc>
-        <lastmod>2017-06-22T11:39:13.800Z</lastmod>
+        <loc>https://blog.wangziq.in/2014/08/uva-10055/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/2013/08/catlooking/</loc>
-        <lastmod>2017-06-22T11:38:35.085Z</lastmod>
+        <loc>https://blog.wangziq.in/2013/08/times-together/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/2014/07/blog-deploy-script/</loc>
-        <lastmod>2017-06-22T11:37:55.975Z</lastmod>
+        <loc>https://blog.wangziq.in/2014/08/uva-10161/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/2013/07/birth-of-blog/</loc>
-        <lastmod>2017-06-22T01:41:20.285Z</lastmod>
+        <loc>https://blog.wangziq.in/2014/08/uva-107/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/2014/10/add-rocket-to-top/</loc>
-        <lastmod>2017-06-22T01:41:20.264Z</lastmod>
+        <loc>https://blog.wangziq.in/2014/08/uva-10719/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

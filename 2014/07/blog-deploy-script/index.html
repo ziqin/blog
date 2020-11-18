@@ -1,36 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  <meta charset="utf-8">
+  
+
   
   <title>写了个发布博客更新的小脚本 | 子勤的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="博客换成 Hexo 之后，觉得写新博文方便了许多。不过，回想一下，现在发一篇新的博文还是有些事情要做的：  用 Markdown 写好博文，然后向 master 分支提交更新 用 Hexo 生成网页 把生成的网页拷贝到其他文件夹里，然后切换到 gitcafe-pages 分支 删除旧的网页，然后把刚刚拷出去的新网页拷回来，再向 gitcafe-pages 提交一次更新 向 GitCafe 推送更新">
-<meta name="keywords" content="Blog,Bash,Git,Hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="写了个发布博客更新的小脚本">
-<meta property="og:url" content="http://blog.wangziq.in/2014/07/blog-deploy-script/index.html">
+<meta property="og:url" content="https://blog.wangziq.in/2014/07/blog-deploy-script/index.html">
 <meta property="og:site_name" content="子勤的博客">
 <meta property="og:description" content="博客换成 Hexo 之后，觉得写新博文方便了许多。不过，回想一下，现在发一篇新的博文还是有些事情要做的：  用 Markdown 写好博文，然后向 master 分支提交更新 用 Hexo 生成网页 把生成的网页拷贝到其他文件夹里，然后切换到 gitcafe-pages 分支 删除旧的网页，然后把刚刚拷出去的新网页拷回来，再向 gitcafe-pages 提交一次更新 向 GitCafe 推送更新">
-<meta property="og:updated_time" content="2017-06-22T11:37:55.975Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2014-07-27T05:57:14.000Z">
+<meta property="article:modified_time" content="2020-11-18T08:25:39.140Z">
+<meta property="article:author" content="王子勤">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="Bash">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="写了个发布博客更新的小脚本">
-<meta name="twitter:description" content="博客换成 Hexo 之后，觉得写新博文方便了许多。不过，回想一下，现在发一篇新的博文还是有些事情要做的：  用 Markdown 写好博文，然后向 master 分支提交更新 用 Hexo 生成网页 把生成的网页拷贝到其他文件夹里，然后切换到 gitcafe-pages 分支 删除旧的网页，然后把刚刚拷出去的新网页拷回来，再向 gitcafe-pages 提交一次更新 向 GitCafe 推送更新">
   
   
     <link rel="icon" href="/favicon.png">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
   
   
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro">
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
+<link rel="stylesheet" href="/css/style.css">
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.2.0"></head>
 
 <body>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+  <div id="container">
     <div id="wrap">
       <header id="header">
   <div id="banner"></div>
@@ -58,10 +67,13 @@
       </nav>
       <nav id="sub-nav">
         
+          <a id="nav-github" class="nav-icon" target="_blank" rel="noopener" href="https://github.com/ziqin" title="GitHub"></a>
+        
+        
         <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.wangziq.in"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.wangziq.in"></form>
       </div>
     </div>
   </div>
@@ -70,7 +82,7 @@
         <section id="main"><article id="post-blog-deploy-script" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/07/blog-deploy-script/" class="article-date">
-  <time datetime="2014-07-27T05:57:14.000Z" itemprop="datePublished">2014年 7月27日 星期日</time>
+  <time datetime="2014-07-27T05:57:14.000Z" itemprop="datePublished">2014-07-27</time>
 </a>
     
   </div>
@@ -101,9 +113,12 @@
 <p>这前前后后的操作加起来，折算成命令行操作的话，就有十几行了。看来工作量还是有不少的。我想，反正这些操作都是相同的，不如写成脚本吧。这样，写好文章后，执行一下这个脚本就可以了。（这也太懒了吧 ←_←）</p>
 <p>所以子勤写一个这样的文件：</p>
 <a id="more"></a>
-<figure class="highlight bash"><figcaption><span>update.sh</span><a href="https://gitcafe.com/ziqin/ziqin/raw/master/update.sh" target="_blank" rel="external">Download</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="built_in">echo</span> <span class="string">"Commit message:"</span></div><div class="line"><span class="built_in">read</span> cmtmsg</div><div class="line"><span class="keyword">if</span> [ ! -n <span class="string">"<span class="variable">$&#123;cmtmsg&#125;</span>"</span> ]; <span class="keyword">then</span></div><div class="line">	cmtmsg=<span class="string">"update"</span> <span class="comment"># 缺省</span></div><div class="line"><span class="keyword">fi</span></div><div class="line"><span class="built_in">echo</span> <span class="string">"Updating..."</span></div><div class="line">hexo clean</div><div class="line">git add --all</div><div class="line">git commit -m <span class="string">"<span class="variable">$&#123;cmtmsg&#125;</span>"</span></div><div class="line">hexo g</div><div class="line">rm db.json</div><div class="line">mv public ../public <span class="comment"># 请确保上级目录中没有名为public的文件夹</span></div><div class="line">git checkout gitcafe-pages</div><div class="line">rm -r `ls` <span class="comment"># ls不会列出.git，因此版本库不会被删除</span></div><div class="line">mv ../public/* .</div><div class="line">rm -r ../public/</div><div class="line">git add --all</div><div class="line">git commit -m <span class="string">"<span class="variable">$&#123;cmtmsg&#125;</span>"</span></div><div class="line">git checkout master</div><div class="line">git push origin master gitcafe-pages</div><div class="line"><span class="built_in">echo</span> <span class="string">'Updated!'</span></div></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><figcaption><span>update.sh</span><a target="_blank" rel="noopener" href="https://gitcafe.com/ziqin/ziqin/raw/master/update.sh">Download</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Commit message:&quot;</span></span><br><span class="line"><span class="built_in">read</span> cmtmsg</span><br><span class="line"><span class="keyword">if</span> [ ! -n <span class="string">&quot;<span class="variable">$&#123;cmtmsg&#125;</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">	cmtmsg=<span class="string">&quot;update&quot;</span> <span class="comment"># 缺省</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Updating...&quot;</span></span><br><span class="line">hexo clean</span><br><span class="line">git add --all</span><br><span class="line">git commit -m <span class="string">&quot;<span class="variable">$&#123;cmtmsg&#125;</span>&quot;</span></span><br><span class="line">hexo g</span><br><span class="line">rm db.json</span><br><span class="line">mv public ../public <span class="comment"># 请确保上级目录中没有名为public的文件夹</span></span><br><span class="line">git checkout gitcafe-pages</span><br><span class="line">rm -r `ls` <span class="comment"># ls不会列出.git，因此版本库不会被删除</span></span><br><span class="line">mv ../public/* .</span><br><span class="line">rm -r ../public/</span><br><span class="line">git add --all</span><br><span class="line">git commit -m <span class="string">&quot;<span class="variable">$&#123;cmtmsg&#125;</span>&quot;</span></span><br><span class="line">git checkout master</span><br><span class="line">git push origin master gitcafe-pages</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;Updated!&#x27;</span></span><br></pre></td></tr></table></figure>
+
 <p>然后给它加上执行权限：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod +x update.sh</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x update.sh</span><br></pre></td></tr></table></figure>
+
 <p>以后，写完博文后，就不用一步步地操作了，只需 <code>./update.sh</code> 运行一下脚本，就能够完成更新的发布。从此，用 Hexo 写博文的方便程度又向 WordPress 靠近了一步。</p>
 <blockquote>
 <p>Hexo + Git + GitCafe，一样可以很简单！ —— Ziqin</p>
@@ -118,10 +133,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://blog.wangziq.in/2014/07/blog-deploy-script/" data-id="cj4crm8gm000cvo08nr0dbdkr" class="article-share-link">Share</a>
+      <a data-url="https://blog.wangziq.in/2014/07/blog-deploy-script/" data-id="ckhn55ihc000dz8op9lbuahpg" class="article-share-link">分享</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bash/">Bash</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blog/">Blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bash/" rel="tag">Bash</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blog/" rel="tag">Blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
 
     </footer>
   </div>
@@ -157,7 +172,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/OI/">OI</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/OI/解题报告/">解题报告</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/OI/解题报告/UVa/">UVa</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OI/解题报告/算法竞赛入门经典/">算法竞赛入门经典</a><span class="category-list-count">3</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/应用/">应用</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/应用/桌面/">桌面</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/前端/">前端</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/测评/">测评</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/校园/">校园</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/App/">App</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OI/">OI</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/">前端</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/%E6%B5%8B%E8%AF%84/">测评</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%A1%E5%9B%AD/">校园</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A2%98%E8%A7%A3/">题解</a><span class="category-list-count">10</span></li></ul>
     </div>
   </div>
 
@@ -167,7 +182,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Arduino/" style="font-size: 10px;">Arduino</a> <a href="/tags/Bash/" style="font-size: 10px;">Bash</a> <a href="/tags/Blog/" style="font-size: 16px;">Blog</a> <a href="/tags/C/" style="font-size: 12px;">C++</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/C语言/" style="font-size: 10px;">C语言</a> <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/Makefile/" style="font-size: 10px;">Makefile</a> <a href="/tags/NOIP/" style="font-size: 10px;">NOIP</a> <a href="/tags/OI/" style="font-size: 20px;">OI</a> <a href="/tags/Qt/" style="font-size: 12px;">Qt</a> <a href="/tags/UVa/" style="font-size: 18px;">UVa</a> <a href="/tags/初中/" style="font-size: 10px;">初中</a> <a href="/tags/库函数/" style="font-size: 12px;">库函数</a> <a href="/tags/排序/" style="font-size: 10px;">排序</a> <a href="/tags/散文/" style="font-size: 12px;">散文</a> <a href="/tags/毕业季/" style="font-size: 10px;">毕业季</a> <a href="/tags/灵动计算机社/" style="font-size: 14px;">灵动计算机社</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/算法竞赛入门经典/" style="font-size: 14px;">算法竞赛入门经典</a> <a href="/tags/网页/" style="font-size: 10px;">网页</a> <a href="/tags/音乐/" style="font-size: 10px;">音乐</a>
+      <a href="/tags/Arduino/" style="font-size: 10px;">Arduino</a> <a href="/tags/Bash/" style="font-size: 10px;">Bash</a> <a href="/tags/Blog/" style="font-size: 16px;">Blog</a> <a href="/tags/C/" style="font-size: 12px;">C++</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">C语言</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/Makefile/" style="font-size: 10px;">Makefile</a> <a href="/tags/NOIP/" style="font-size: 10px;">NOIP</a> <a href="/tags/OI/" style="font-size: 20px;">OI</a> <a href="/tags/Qt/" style="font-size: 12px;">Qt</a> <a href="/tags/UVa/" style="font-size: 18px;">UVa</a> <a href="/tags/%E5%88%9D%E4%B8%AD/" style="font-size: 10px;">初中</a> <a href="/tags/%E5%BA%93%E5%87%BD%E6%95%B0/" style="font-size: 10px;">库函数</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a> <a href="/tags/%E6%95%A3%E6%96%87/" style="font-size: 12px;">散文</a> <a href="/tags/%E6%AF%95%E4%B8%9A%E5%AD%A3/" style="font-size: 10px;">毕业季</a> <a href="/tags/%E7%81%B5%E5%8A%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A4%BE/" style="font-size: 14px;">灵动计算机社</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8/" style="font-size: 14px;">算法竞赛入门经典</a> <a href="/tags/%E7%BD%91%E9%A1%B5/" style="font-size: 10px;">网页</a> <a href="/tags/%E9%9F%B3%E4%B9%90/" style="font-size: 10px;">音乐</a>
     </div>
   </div>
 
@@ -205,30 +220,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
+    <h3 class="widget-title">存档</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
 
-  
-    <div class="widget-wrap">
-	<h3 class="widget-title">友情链接</h3>
-	<div class="widget">
-		<ul>
-			
-				<li><a href="http://ld.mmyz.net/" target="_blank">灵动计算机社</a></li>
-			
-				<li><a href="http://www.alekolau.cn/" target="_blank">Aleko Lau</a></li>
-			
-				<li><a href="http://www.zeyes.org/" target="_blank">凌点时代</a></li>
-			
-				<li><a href="https://www.byvoid.com/" target="_blank">BYVoid</a></li>
-			
-		</ul>
-	</div>
-</div> 
   
 </aside>
         
@@ -237,8 +235,8 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017王子勤<br>
-      本站文章以 <a href="https://creativecommons.org/licenses/by-sa/3.0/cn/" target="_blank">CC BY-SA 3.0 CN</a> 许可协议发布<br>
+      &copy; 2020 王子勤<br>
+      本站文章以 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank">CC BY-SA 4.0</a> 许可协议发布<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
@@ -255,19 +253,31 @@
 </nav>
     
 
-<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.2/dist/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/css/rocket-to-top.css">
-  <script src="/js/rocket-to-top.js"></script>
+  
+<link rel="stylesheet" href="/css/rocket-to-top.css">
+
+  
+<script src="/js/rocket-to-top.js"></script>
 
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/js/script.js"></script>
+
+
+
 
     
       <div id="rocket-to-top">
@@ -276,6 +286,6 @@
 </div>
 
     
-  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </div>
 </body>
 </html>

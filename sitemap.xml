@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+
     <sitemap>
-        <loc>http://blog.wangziq.in/post-sitemap.xml</loc>
-        <lastmod>2017-06-25T13:43:04.346Z</lastmod>
+        <loc>https://blog.wangziq.in/post-sitemap.xml</loc>
+        <lastmod>2020-11-18T08:25:39.144Z</lastmod>
     </sitemap>
 
     <sitemap>
-        <loc>http://blog.wangziq.in/page-sitemap.xml</loc>
-        <lastmod>2017-06-22T11:37:13.937Z</lastmod>
+        <loc>https://blog.wangziq.in/page-sitemap.xml</loc>
+        <lastmod>2020-11-18T08:25:39.144Z</lastmod>
     </sitemap>
 
     <sitemap>
-        <loc>http://blog.wangziq.in/category-sitemap.xml</loc>
-        <lastmod>2017-06-22T14:35:45.254Z</lastmod>
+        <loc>https://blog.wangziq.in/category-sitemap.xml</loc>
+        <lastmod>2020-11-18T08:25:39.144Z</lastmod>
     </sitemap>
 
 </sitemapindex>

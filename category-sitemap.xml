@@ -1,84 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
     <url>
-        <loc>http://blog.wangziq.in</loc>
+        <loc>https://blog.wangziq.in/</loc>
         <changefreq>daily</changefreq>
         <priority>1</priority>
     </url>
 
+
     <url>
-        <loc>http://blog.wangziq.in/categories/OI/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8/</loc>
-        <lastmod>2017-06-22T14:35:45.254Z</lastmod>
+        <loc>https://blog.wangziq.in/categories/%25E6%25A0%25A1%25E5%259B%25AD/</loc>
+        <lastmod>2020-11-18T08:25:39.144Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/categories/%E6%A0%A1%E5%9B%AD/</loc>
-        <lastmod>2017-06-22T14:41:08.628Z</lastmod>
+        <loc>https://blog.wangziq.in/categories/%25E9%25A2%2598%25E8%25A7%25A3/</loc>
+        <lastmod>2020-11-18T08:25:39.144Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/categories/%E6%8A%80%E6%9C%AF/%E6%B5%8B%E8%AF%84/</loc>
-        <lastmod>2017-06-22T14:41:36.296Z</lastmod>
+        <loc>https://blog.wangziq.in/categories/%25E7%2594%259F%25E6%25B4%25BB/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/categories/%E6%8A%80%E6%9C%AF/</loc>
-        <lastmod>2017-06-22T14:42:01.215Z</lastmod>
+        <loc>https://blog.wangziq.in/categories/OI/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/categories/%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/</loc>
-        <lastmod>2017-06-22T14:42:01.215Z</lastmod>
+        <loc>https://blog.wangziq.in/categories/%25E6%258A%2580%25E6%259C%25AF/%25E6%25B5%258B%25E8%25AF%2584/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/categories/%E7%94%9F%E6%B4%BB/</loc>
-        <lastmod>2017-06-22T14:42:25.928Z</lastmod>
+        <loc>https://blog.wangziq.in/categories/%25E6%258A%2580%25E6%259C%25AF/%25E5%2589%258D%25E7%25AB%25AF/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/categories/OI/</loc>
-        <lastmod>2017-06-22T14:43:19.742Z</lastmod>
+        <loc>https://blog.wangziq.in/categories/%25E6%258A%2580%25E6%259C%25AF/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://blog.wangziq.in/categories/OI/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/</loc>
-        <lastmod>2017-06-22T14:43:19.742Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://blog.wangziq.in/categories/OI/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/UVa/</loc>
-        <lastmod>2017-06-22T14:43:19.742Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://blog.wangziq.in/categories/%E5%BA%94%E7%94%A8/</loc>
-        <lastmod>2017-06-25T13:43:04.346Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://blog.wangziq.in/categories/%E5%BA%94%E7%94%A8/%E6%A1%8C%E9%9D%A2/</loc>
-        <lastmod>2017-06-25T13:43:04.346Z</lastmod>
+        <loc>https://blog.wangziq.in/categories/App/</loc>
+        <lastmod>2020-11-18T08:25:39.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
