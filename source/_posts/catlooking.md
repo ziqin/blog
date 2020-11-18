@@ -1,8 +1,7 @@
 title: Catlooking 一个专心写作的环境
 date: 2013-08-21
 categories:
-- 应用
-- 桌面
+- App
 tags: 
 - Qt
 ---

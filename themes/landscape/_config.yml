@@ -3,7 +3,7 @@ menu:
   首页: /
   关于: /about
   存档: /archives
-#rss: /atom.xml
+# rss: /atom.xml
 
 # Content
 excerpt_link: 继续阅读
@@ -16,14 +16,7 @@ widgets:
 - tagcloud
 - recent_posts
 - archive
-- blogroll
 # - tag
-
-blogroll:
-  灵动计算机社: http://ld.mmyz.net/
-  Aleko Lau: http://www.alekolau.cn/
-  凌点时代: http://www.zeyes.org/
-  BYVoid: https://www.byvoid.com/
 
 # display widgets at the bottom of index pages (pagination == 2)
 index_widgets:
@@ -39,7 +32,9 @@ rocket_to_top: true
 
 # Miscellaneous
 # google_analytics:
+# gauges_analytics:
 favicon: /favicon.png
+github: ziqin
 # twitter:
 # google_plus:
 # fb_admins:

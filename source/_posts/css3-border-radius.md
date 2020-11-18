@@ -8,7 +8,9 @@ tags:
 - 网页
 ---
 
-<img src="/img/2013/css3-border-radius/cptsct.png" alt="I love Computer Society!" class="rounded" style="border: 0; border-radius: 48px; height: 256px; width: 256px; box-shadow: 0 0 20px #999; display: block;">
+<div style="padding: 2rem">
+  <img src="/img/2013/css3-border-radius/cptsct.png" alt="I love Computer Society!" class="rounded" style="border: 0; border-radius: 48px; height: 256px; width: 256px; box-shadow: 0 0 20px #999; display: block;">
+</div>
 
 ---
 

@@ -1,8 +1,7 @@
 title: 高考倒计时
 date: 2016-01-31 20:35:28
 categories:
-- 应用
-- 桌面
+- App
 tags:
 - Qt
 - C++

@@ -14,7 +14,7 @@
 </script>
 <% } %>
 
-<%- js('//cdn.bootcss.com/jquery/2.0.3/jquery.min.js') %>
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.2/dist/jquery.min.js"></script>
 
 <% if (theme.rocket_to_top) { %>
   <%- css('css/rocket-to-top') %>
@@ -27,3 +27,4 @@
 <% } %>
 
 <%- js('js/script') %>
+<%- partial('gauges-analytics') %>
