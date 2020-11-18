@@ -21,6 +21,10 @@ collections:
       - name: categories
         label: Categories
         widget: list
+        field:
+          name: category
+          label: Category
+          widget: string
       - name: tags
         label: Tags
         widget: list
