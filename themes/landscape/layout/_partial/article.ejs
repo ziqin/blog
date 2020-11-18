@@ -28,6 +28,16 @@
         <a href="<%- post.permalink %>#disqus_thread" class="article-comment-link"><%= __('comment') %></a>
       <% } %>
       <%- partial('post/tag') %>
+      <% if (!index && theme.utteranc) { %>
+        <script src="https://utteranc.es/client.js"
+                repo="<%- theme.utteranc.repo %>"
+                issue-term="<%- theme.utteranc.issue_term %>"
+                label="<%- theme.utteranc.label %>"
+                theme="<%- theme.utteranc.theme %>"
+                crossorigin="anonymous"
+                async>
+        </script>
+      <% } %>
     </footer>
   </div>
   <% if (!index){ %>

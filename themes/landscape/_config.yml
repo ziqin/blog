@@ -30,6 +30,13 @@ show_count: true
 
 rocket_to_top: true
 
+utteranc:
+  repo: ziqin/blog
+  issue_term: pathname
+  label: comment
+  theme: github-light
+
+
 # Miscellaneous
 # google_analytics:
 # gauges_analytics:
