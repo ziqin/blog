@@ -1,3 +1,4 @@
+---
 title: 我的 NOIP 2014
 date: 2014-12-20 20:31:12
 categories:

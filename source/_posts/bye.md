@@ -1,3 +1,4 @@
+---
 title: 告别
 date: 2015-07-29 23:30:28
 categories:

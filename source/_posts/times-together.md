@@ -1,3 +1,4 @@
+---
 title: 一起度过的日子
 date: 2013-08-30
 categories:
