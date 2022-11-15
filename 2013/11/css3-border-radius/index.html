@@ -10,19 +10,19 @@
   <meta name="description" content="好用的 CSS3 特性：border-radius（圆角边框）属性我们常常想在网页中做出像上面这种圆角图片的效果。在过去，我们不得不先把每张图片先改成圆角的，再插入到网页中；或者使用一些复杂的脚本。这样做非常不方便。现在，我们只需利用 CSS3 的一个特性——border-radius 属性，就可以简单地把图片做成圆角的样子了。以下便是上面这张图片的 CSS 样式：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="利用 CSS3 特性轻松实现图片圆角">
-<meta property="og:url" content="https://blog.wangziq.in/2013/11/css3-border-radius/index.html">
+<meta property="og:url" content="https://blog.wangziqin.net/2013/11/css3-border-radius/index.html">
 <meta property="og:site_name" content="子勤的博客">
 <meta property="og:description" content="好用的 CSS3 特性：border-radius（圆角边框）属性我们常常想在网页中做出像上面这种圆角图片的效果。在过去，我们不得不先把每张图片先改成圆角的，再插入到网页中；或者使用一些复杂的脚本。这样做非常不方便。现在，我们只需利用 CSS3 的一个特性——border-radius 属性，就可以简单地把图片做成圆角的样子了。以下便是上面这张图片的 CSS 样式：">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.wangziq.in/img/2013/css3-border-radius/cptsct.png">
-<meta property="og:image" content="https://blog.wangziq.in/img/2013/css3-border-radius/cptsct.png">
+<meta property="og:image" content="https://blog.wangziqin.net/img/2013/css3-border-radius/cptsct.png">
+<meta property="og:image" content="https://blog.wangziqin.net/img/2013/css3-border-radius/cptsct.png">
 <meta property="article:published_time" content="2013-11-29T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-11-18T14:04:22.519Z">
+<meta property="article:modified_time" content="2022-11-15T02:49:15.930Z">
 <meta property="article:author" content="王子勤">
 <meta property="article:tag" content="CSS">
 <meta property="article:tag" content="网页">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.wangziq.in/img/2013/css3-border-radius/cptsct.png">
+<meta name="twitter:image" content="https://blog.wangziqin.net/img/2013/css3-border-radius/cptsct.png">
   
   
     <link rel="icon" href="/favicon.png">
@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.2.0"></head>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
 
 <body>
   <div id="container">
@@ -74,7 +74,7 @@
         <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.wangziq.in"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.wangziqin.net"></form>
       </div>
     </div>
   </div>
@@ -112,7 +112,7 @@
 
 <hr>
 <h3 id="好用的-CSS3-特性：border-radius（圆角边框）属性"><a href="#好用的-CSS3-特性：border-radius（圆角边框）属性" class="headerlink" title="好用的 CSS3 特性：border-radius（圆角边框）属性"></a>好用的 CSS3 特性：border-radius（圆角边框）属性</h3><p>我们常常想在网页中做出像上面这种圆角图片的效果。在过去，我们不得不先把每张图片先改成圆角的，再插入到网页中；或者使用一些复杂的脚本。这样做非常不方便。现在，我们只需利用 CSS3 的一个特性——<code>border-radius</code> 属性，就可以简单地把图片做成圆角的样子了。以下便是上面这张图片的 CSS 样式：</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.rounded</span> &#123;</span><br><span class="line">	<span class="comment">/* 图片大小 */</span></span><br><span class="line">	<span class="attribute">height</span>: <span class="number">256px</span>;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">256px</span>;</span><br><span class="line">	<span class="comment">/* 圆角边框 */</span></span><br><span class="line">	<span class="attribute">border</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">border-radius</span>: <span class="number">48px</span>;</span><br><span class="line">	<span class="comment">/* 阴影 */</span></span><br><span class="line">	<span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">20px</span> <span class="number">#999</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -121,7 +121,7 @@
 
 <hr>
 <p>CSS3 的 <code>border-radius</code> 属性不仅可以用于 <code>&lt;img&gt;</code> 标签，还可以用于 <code>&lt;div&gt;</code> 标签等。我们可以用这种方法简单地画出圆角矩形：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;rounded_rectangle&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">	<span class="selector-id">#rounded_rectangle</span> &#123;</span></span><br><span class="line">		border: 10px gray double;</span><br><span class="line">		border-radius:	60px 30px 20px 10px;</span><br><span class="line"><span class="css">			    <span class="comment">/*	左上  右上  右下  左下 */</span></span></span><br><span class="line">		height: 100px; width: 400px;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;rounded_rectangle&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">	<span class="selector-id">#rounded_rectangle</span> &#123;</span></span><br><span class="line"><span class="language-css">		<span class="attribute">border</span>: <span class="number">10px</span> gray double;</span></span><br><span class="line"><span class="language-css">		<span class="attribute">border-radius</span>:	<span class="number">60px</span> <span class="number">30px</span> <span class="number">20px</span> <span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">			    <span class="comment">/*	左上  右上  右下  左下 */</span></span></span><br><span class="line"><span class="language-css">		<span class="attribute">height</span>: <span class="number">100px</span>; <span class="attribute">width</span>: <span class="number">400px</span>;</span></span><br><span class="line"><span class="language-css">	&#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>效果如下：</p>
 <div id="rounded_rectangle"></div>
@@ -140,7 +140,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.wangziq.in/2013/11/css3-border-radius/" data-id="ckhnh99o7000u0bowfmyjcyo7" class="article-share-link">分享</a>
+      <a data-url="https://blog.wangziqin.net/2013/11/css3-border-radius/" data-id="clahm907j000ug4oieyc3b8bi" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E9%A1%B5/" rel="tag">网页</a></li></ul>
@@ -252,7 +252,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 王子勤<br>
+      &copy; 2022 王子勤<br>
       本站文章以 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank">CC BY-SA 4.0</a> 许可协议发布<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>

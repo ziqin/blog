@@ -10,12 +10,12 @@
   <meta name="description" content="博客换成 Hexo 之后，觉得写新博文方便了许多。不过，回想一下，现在发一篇新的博文还是有些事情要做的：  用 Markdown 写好博文，然后向 master 分支提交更新 用 Hexo 生成网页 把生成的网页拷贝到其他文件夹里，然后切换到 gitcafe-pages 分支 删除旧的网页，然后把刚刚拷出去的新网页拷回来，再向 gitcafe-pages 提交一次更新 向 GitCafe 推送更新">
 <meta property="og:type" content="article">
 <meta property="og:title" content="写了个发布博客更新的小脚本">
-<meta property="og:url" content="https://blog.wangziq.in/2014/07/blog-deploy-script/index.html">
+<meta property="og:url" content="https://blog.wangziqin.net/2014/07/blog-deploy-script/index.html">
 <meta property="og:site_name" content="子勤的博客">
 <meta property="og:description" content="博客换成 Hexo 之后，觉得写新博文方便了许多。不过，回想一下，现在发一篇新的博文还是有些事情要做的：  用 Markdown 写好博文，然后向 master 分支提交更新 用 Hexo 生成网页 把生成的网页拷贝到其他文件夹里，然后切换到 gitcafe-pages 分支 删除旧的网页，然后把刚刚拷出去的新网页拷回来，再向 gitcafe-pages 提交一次更新 向 GitCafe 推送更新">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2014-07-27T05:57:14.000Z">
-<meta property="article:modified_time" content="2020-11-18T14:04:22.515Z">
+<meta property="article:modified_time" content="2022-11-15T02:49:15.930Z">
 <meta property="article:author" content="王子勤">
 <meta property="article:tag" content="Blog">
 <meta property="article:tag" content="Bash">
@@ -36,7 +36,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.2.0"></head>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
 
 <body>
   <div id="container">
@@ -73,7 +73,7 @@
         <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.wangziq.in"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.wangziqin.net"></form>
       </div>
     </div>
   </div>
@@ -112,12 +112,12 @@
 </ol>
 <p>这前前后后的操作加起来，折算成命令行操作的话，就有十几行了。看来工作量还是有不少的。我想，反正这些操作都是相同的，不如写成脚本吧。这样，写好文章后，执行一下这个脚本就可以了。（这也太懒了吧 ←_←）</p>
 <p>所以子勤写一个这样的文件：</p>
-<a id="more"></a>
+<span id="more"></span>
 
-<figure class="highlight bash"><figcaption><span>update.sh</span><a target="_blank" rel="noopener" href="https://gitcafe.com/ziqin/ziqin/raw/master/update.sh">Download</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Commit message:&quot;</span></span><br><span class="line"><span class="built_in">read</span> cmtmsg</span><br><span class="line"><span class="keyword">if</span> [ ! -n <span class="string">&quot;<span class="variable">$&#123;cmtmsg&#125;</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">	cmtmsg=<span class="string">&quot;update&quot;</span> <span class="comment"># 缺省</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Updating...&quot;</span></span><br><span class="line">hexo clean</span><br><span class="line">git add --all</span><br><span class="line">git commit -m <span class="string">&quot;<span class="variable">$&#123;cmtmsg&#125;</span>&quot;</span></span><br><span class="line">hexo g</span><br><span class="line">rm db.json</span><br><span class="line">mv public ../public <span class="comment"># 请确保上级目录中没有名为public的文件夹</span></span><br><span class="line">git checkout gitcafe-pages</span><br><span class="line">rm -r `ls` <span class="comment"># ls不会列出.git，因此版本库不会被删除</span></span><br><span class="line">mv ../public/* .</span><br><span class="line">rm -r ../public/</span><br><span class="line">git add --all</span><br><span class="line">git commit -m <span class="string">&quot;<span class="variable">$&#123;cmtmsg&#125;</span>&quot;</span></span><br><span class="line">git checkout master</span><br><span class="line">git push origin master gitcafe-pages</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;Updated!&#x27;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><figcaption><span>update.sh</span><a target="_blank" rel="noopener" href="https://gitcafe.com/ziqin/ziqin/raw/master/update.sh">Download</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Commit message:&quot;</span></span><br><span class="line"><span class="built_in">read</span> cmtmsg</span><br><span class="line"><span class="keyword">if</span> [ ! -n <span class="string">&quot;<span class="variable">$&#123;cmtmsg&#125;</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">	cmtmsg=<span class="string">&quot;update&quot;</span> <span class="comment"># 缺省</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Updating...&quot;</span></span><br><span class="line">hexo clean</span><br><span class="line">git add --all</span><br><span class="line">git commit -m <span class="string">&quot;<span class="variable">$&#123;cmtmsg&#125;</span>&quot;</span></span><br><span class="line">hexo g</span><br><span class="line"><span class="built_in">rm</span> db.json</span><br><span class="line"><span class="built_in">mv</span> public ../public <span class="comment"># 请确保上级目录中没有名为public的文件夹</span></span><br><span class="line">git checkout gitcafe-pages</span><br><span class="line"><span class="built_in">rm</span> -r `<span class="built_in">ls</span>` <span class="comment"># ls不会列出.git，因此版本库不会被删除</span></span><br><span class="line"><span class="built_in">mv</span> ../public/* .</span><br><span class="line"><span class="built_in">rm</span> -r ../public/</span><br><span class="line">git add --all</span><br><span class="line">git commit -m <span class="string">&quot;<span class="variable">$&#123;cmtmsg&#125;</span>&quot;</span></span><br><span class="line">git checkout master</span><br><span class="line">git push origin master gitcafe-pages</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;Updated!&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <p>然后给它加上执行权限：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x update.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x update.sh</span><br></pre></td></tr></table></figure>
 
 <p>以后，写完博文后，就不用一步步地操作了，只需 <code>./update.sh</code> 运行一下脚本，就能够完成更新的发布。从此，用 Hexo 写博文的方便程度又向 WordPress 靠近了一步。</p>
 <blockquote>
@@ -133,7 +133,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.wangziq.in/2014/07/blog-deploy-script/" data-id="ckhnh99nu000b0bowcw7s8bj6" class="article-share-link">分享</a>
+      <a data-url="https://blog.wangziqin.net/2014/07/blog-deploy-script/" data-id="clahm907b000bg4oi7nrf3teh" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bash/" rel="tag">Bash</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blog/" rel="tag">Blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
@@ -245,7 +245,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 王子勤<br>
+      &copy; 2022 王子勤<br>
       本站文章以 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank">CC BY-SA 4.0</a> 许可协议发布<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
