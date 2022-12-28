@@ -15,11 +15,13 @@
 <meta property="og:description" content="题目链接：http:&#x2F;&#x2F;uva.onlinejudge.org&#x2F;external&#x2F;4&#x2F;414.html  题目分析这道题的题目挺长。其实要完成的任务是通过左右平移来拼接机器（左边和右边分别是一个固定的块，要整体平移），直到左右两边的机器有相接触的地方，此时统计还剩多少个空。通过字符串输入平移前机器的样子，输出平移后的间隙（即空格）。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2014-08-13T13:23:40.000Z">
-<meta property="article:modified_time" content="2022-11-15T02:54:21.637Z">
+<meta property="article:modified_time" content="2022-12-28T18:33:26.016Z">
 <meta property="article:author" content="王子勤">
 <meta property="article:tag" content="OI">
 <meta property="article:tag" content="UVa">
 <meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="子勤的博客" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -34,7 +36,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
   <div id="container">
@@ -48,7 +50,7 @@
       </h1>
       
         <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">随手写写</a>
+          <a href="/" id="subtitle">自由散漫～</a>
         </h2>
       
     </div>
@@ -67,6 +69,8 @@
         
           <a id="nav-github" class="nav-icon" target="_blank" rel="noopener" href="https://github.com/ziqin" title="GitHub"></a>
         
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
         <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
@@ -116,14 +120,14 @@ XXXXX                XXXX            XXXXX XXXX
 XX                 XXXXXX            XX  XXXXXX
 </code></pre>
 <p>题目只需要求出平移后的结果，我们大可不必模拟每一步平移的过程，而是直接去算最后一步。</p>
-<p>因为肯定是最长（X 最多）的那行先接触，所以它是无缝拼接，该行的空格数为 0；<br>其他行的空格数 = 最长行宽度 - 本行 X 数。</p>
+<p>因为肯定是最长（X 最多）的那行先接触，所以它是无缝拼接，该行的空格数为 0；<br>其他行的空格数 &#x3D; 最长行宽度 - 本行 X 数。</p>
 <p>因此，只需要在全部输入后找出最长行，算出每行的空格空格数并累加起来即可。</p>
 <hr>
 <h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 行 */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">row_type</span> &#123;</span><br><span class="line">	<span class="type">int</span> leftlen;</span><br><span class="line">	<span class="type">int</span> rightlen;</span><br><span class="line">	<span class="type">int</span> sum;</span><br><span class="line">&#125; row_type;</span><br><span class="line"></span><br><span class="line">row_type row[<span class="number">15</span>];</span><br><span class="line"><span class="type">char</span> buf[<span class="number">30</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> n, i, len, maxsum, blank = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (;;) &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">		<span class="keyword">if</span> (n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">				<span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, buf);	<span class="comment">/* 左块 */</span></span><br><span class="line">				len = <span class="built_in">strlen</span>(buf);</span><br><span class="line">				<span class="keyword">if</span> (len == <span class="number">25</span>) &#123;	<span class="comment">/* 整行都是X */</span></span><br><span class="line">					row[i].leftlen = len;</span><br><span class="line">					row[i].rightlen = <span class="number">0</span>;</span><br><span class="line">					row[i].sum = len;</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">					row[i].leftlen = len;</span><br><span class="line">					<span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, buf);	<span class="comment">/* 右块 */</span></span><br><span class="line">					row[i].rightlen = <span class="built_in">strlen</span>(buf);</span><br><span class="line">					row[i].sum = row[i].leftlen + row[i].rightlen;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="comment">/* 找到最宽(X最多)的行 */</span></span><br><span class="line">			<span class="keyword">for</span> (i = <span class="number">1</span>, maxsum = row[<span class="number">0</span>].sum; i &lt; n; i++)</span><br><span class="line">				<span class="keyword">if</span> (row[i].sum &gt; maxsum)</span><br><span class="line">					maxsum = row[i].sum;</span><br><span class="line"></span><br><span class="line">			<span class="comment">/* 统计剩余空格数 */</span></span><br><span class="line">			<span class="keyword">for</span> (i = <span class="number">0</span>, blank = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">				blank += maxsum - row[i].sum;</span><br><span class="line"></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, blank);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.wangziqin.net/2014/08/uva-414/" data-id="clahmfisn001meboqa1x5hkag" class="article-share-link">分享</a>
+      <a data-url="https://blog.wangziqin.net/2014/08/uva-414/" data-id="clc7zx0d1001mfooq02lv0p1z" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OI/" rel="tag">OI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UVa/" rel="tag">UVa</a></li></ul>
