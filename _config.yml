@@ -109,6 +109,9 @@ sitemap:
   tag: false
   category: true
 
+feed:
+  icon: favicon.png
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
