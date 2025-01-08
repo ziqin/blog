@@ -1,13 +1,13 @@
 ---
 title: 关于
-date: 2013-07-18
+date: 2025-01-09
 ---
 
 ### 关于子勤
 
 <img src="/img/ziqin.png" class="rounded" style="border: 0; border-radius: 64px; height: 128px; width: 128px; box-shadow: 0 0 10px #999; display: block;">
 
-我叫王子勤，一名学生，热爱音乐、计算机科技。
+我叫王子勤，热爱音乐、计算机科技。
 
 <!-- more -->
 
@@ -21,7 +21,7 @@ date: 2013-07-18
 
 ### 我的联系方式
 
-Email: <i@wangziq.in>
-GitHub: [Wang Ziqin](https://github.com/ziqin)
+Email: <ziqin@wangziqin.net>
+GitHub: [Ziqin Wang](https://github.com/ziqin)
 
 希望能与你一起交流，共同进步。
