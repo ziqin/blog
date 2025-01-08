@@ -15,7 +15,7 @@
 <meta property="og:description" content="看书的时候时不时会遇到对各种排序算法的介绍。有这么多排序算法，在比赛中一般用哪种会比较好？一方面想着，“快排大法好！现成不用码！”但又听说有的数据会专门卡快排。而且，快排真的有那么快吗？种种顾虑涌上心头。所以，今天晚上我决定对两三个常见的排序算法测个明白，来个感性的认识。 当然，子勤下面的探究结果对于不同的情境可能不适用，我也无法保证一下结论的正确性（就连今天下午测得的结果也与今天晚上的有相互矛盾">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2014-08-18T16:30:23.000Z">
-<meta property="article:modified_time" content="2022-12-28T18:33:26.016Z">
+<meta property="article:modified_time" content="2025-01-08T21:14:27.659Z">
 <meta property="article:author" content="王子勤">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="OI">
@@ -136,7 +136,7 @@
 <li>冒泡排序</li>
 </ul>
 <p>作为子勤第一个听说的排序算法，当然要首先登场啦：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">bubble_sort</span><span class="params">(<span class="type">int</span> nmemb)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = nmemb - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--)</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; i; j++)</span><br><span class="line">            <span class="keyword">if</span> (data[j] &gt; data[j+<span class="number">1</span>])</span><br><span class="line">                std::<span class="built_in">swap</span>(data[j], data[j+<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">bubble_sort</span><span class="params">(<span class="type">int</span> nmemb)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = nmemb - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--)</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; i; j++)</span><br><span class="line">            <span class="keyword">if</span> (data[j] &gt; data[j<span class="number">+1</span>])</span><br><span class="line">                std::<span class="built_in">swap</span>(data[j], data[j<span class="number">+1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>在 <code>main()</code> 里调用 <code>bubble_sort(n)</code> 便可以了。</p>
 <ul>
@@ -192,7 +192,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://blog.wangziqin.net/2014/08/compare-sort/" data-id="clc7zx0ca000nfooqd004dze2" class="article-share-link">分享</a>
+      <a data-url="https://blog.wangziqin.net/2014/08/compare-sort/" data-id="cm5oedylq000nfpq42dsf0m01" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OI/" rel="tag">OI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BA%93%E5%87%BD%E6%95%B0/" rel="tag">库函数</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
@@ -304,12 +304,13 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2022 王子勤<br>
-      本站文章以 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank">CC BY-SA 4.0</a> 许可协议发布<br>
+      © 2013–2025 王子勤<br>
+      本站文章以 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans" target="_blank">CC BY-SA 4.0</a> 许可协议发布<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
+
     </div>
     <nav id="mobile-nav">
   
